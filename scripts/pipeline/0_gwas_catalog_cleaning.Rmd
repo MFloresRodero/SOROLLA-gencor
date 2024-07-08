@@ -1,0 +1,135 @@
+---
+title: "GWAS CATALOG"
+output: html_document
+date: "2024-05-03"
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(stringr)
+
+```
+
+
+# Load the csv file
+```{r}
+full_catalog <- readr::read_tsv("/home/maria/git/SOROLLA/SumStats/summary_statistics_table_export.tsv", num_threads = 1)
+```
+
+## Clean the data and only keep the rows that are relevant
+```{r}
+#Filter by technology (only interested GWGA)
+filtered_catalog <- full_catalog %>%
+               filter(grepl("Genome-wide genotyping array", genotypingTechnologies, fixed = TRUE) &
+                        !grepl("Exome-wide sequencing", genotypingTechnologies, fixed = TRUE) &
+                        #Include and exclude ancestries
+                        grepl("European", discoverySampleAncestry, fixed = TRUE) & 
+                        !grepl("Asian", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("Latin", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("Hispanic", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("African", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("NR", discoverySampleAncestry, fixed = TRUE))
+head(filtered_catalog)
+
+#Extract numeric part and nationality, and add as new columns
+filtered_catalog <- filtered_catalog %>%
+               mutate(SampleSize = as.numeric(gsub("\\D", "", discoverySampleAncestry)),
+                      Ancestry = gsub("\\d", "", discoverySampleAncestry))
+
+#Filter the SampleSize to at least 10K
+filtered_catalog <- filtered_catalog %>%
+                filter(SampleSize >= 5000)
+
+# Save filtered_catalog as a CSV file
+write.csv(filtered_catalog, "/home/maria/git/SOROLLA/SumStats/filtered_catalog.csv", row.names = FALSE)
+
+# Confirmation message
+cat("filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/filtered_catalog.csv'")
+
+```
+Now create another dataframe filtering with the desired keywords.
+```{r}
+# Define the terms to search for
+terms <- c(
+  "ADHD", "attention deficit", "hyperactivity", "ADD", "Anxiety", "Panic", "Autism", "Asperger", "Bipolar", "Depression", 
+  "Manic", "Brain", "Cancer", "Neoplasm", "Carcinoma", "insanity", "cerebral", "central nervous", "malignancy", "psychosis", 
+  "Pervasive Developmental Disorder", "breast", "colorectal", "colon", "anal", "rectal", "depression", "mood", "endometrial", 
+  "endometrium", "endometriosis", "uterine", "uterus", "cervix", "cervical", "kidney", "liver", "hepatic", "ovarian", "ovaries", 
+  "ovary", "pancreas", "pancreatic", "prostate", "testicular", "testis", "endocrine", "Schizophrenia", "psychotic", "thyroid", 
+  "leukemia", "lymphoma", "melanoma", "sarcoma", "lung", "stomach", "stomacal", "gastrointestinal", "intestines", "gastric", 
+  "cancerous", "tumor", "malignant", "benign", "metastasis", "gastrointestinal tract", "gastroenterology", "digestive system", 
+  "esophagus", "stomach", "small intestine", "large intestine", "colon", "rectum", "anus", "liver", "gallbladder", "pancreas", 
+  "bile ducts", "duodenum", "jejunum", "ileum", "cecum", "appendix", "rectum", "peritoneum", "lymph", "lymphatic", "hepatic", 
+  "hepatocellular", "gut", "intestinal", "microbiota", "microbiome"
+)
+
+```
+
+
+
+```{r}
+# Function to check if any term is present in a string (case-insensitive)
+check_terms <- function(string) {
+  # Convert both the string and terms to lower case for case-insensitive comparison
+  string <- as.character(string)
+  terms_lower <- tolower(terms)
+  # Check if any term is present in the string
+  any(grepl(paste(terms_lower, collapse="|"), string, ignore.case=TRUE))
+}
+
+# Filter dataframe to rows where any of the terms are present in "reportedTrait" or "efoTraits" (corrected column name)
+matches <- sapply(1:nrow(filtered_catalog), function(i) {
+  check_terms(filtered_catalog[i, "reportedTrait"]) || check_terms(filtered_catalog[i, "efoTraits"])
+})
+
+words_filtered_catalog <- filtered_catalog[matches, ]
+print(words_filtered_catalog)
+
+```
+
+```{r}
+# Save filtered_catalog as a CSV file
+write.csv(words_filtered_catalog, "/home/maria/git/SOROLLA/SumStats/words_filtered_catalog.csv", row.names = FALSE)
+
+# Confirmation message
+cat("words_filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/words_filtered_catalog.csv'")
+```
+
+```{r}
+df <- read.csv("/home/maria/git/SOROLLA/SumStats/SUMSTATS CATALOG - words_filtered_catalog.csv")
+
+```
+
+
+```{r}
+# Function to extract numbers and update Nca_val or Nco_val
+extract_and_update <- function(description) {
+  # Remove commas from the description
+  description <- gsub(",", "", description)
+  
+  Nca_val <- ifelse(grepl("cases", description, ignore.case = TRUE),
+                    as.numeric(str_extract(description, "\\d+(?=\\s*European ancestry cases)")),
+                    NA)
+  Nco_val <- ifelse(grepl("controls", description, ignore.case = TRUE),
+                    as.numeric(str_extract(description, "\\d+(?=\\s*European ancestry controls)")),
+                    NA)
+  
+  return(data.frame(Nca_val = Nca_val, Nco_val = Nco_val))
+}
+
+# Apply function to populate Nca_val and Nco_val columns
+df <- df %>%
+  mutate(extracted_vals = extract_and_update(initialSampleDescription),
+         Nca_val = extracted_vals$Nca_val,
+         Nco_val = extracted_vals$Nco_val) %>%
+  select(-extracted_vals)
+
+```
+
+```{r}
+write.csv(df, "/home/maria/git/SOROLLA/SumStats/SUMSTATS CATALOG - words_filtered_catalog.csv", row.names = FALSE)
+
+```
+
+
