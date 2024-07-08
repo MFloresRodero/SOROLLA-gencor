@@ -1,0 +1,39 @@
+# Files to ignore because are not necessary at all
+/home/maria/git/SOROLLA/__pycache__/
+/home/maria/git/SOROLLA/config/.ipynb_checkpoints
+/home/maria/git/SOROLLA/typescript
+
+# Ignore files from Fabian's results
+/home/maria/git/SOROLLA/Fabian/
+
+# Ignore reference files except doc showing locations
+/home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/
+/home/maria/git/SOROLLA/Ref_Genomes/eur_w_ld_chr/
+/home/maria/git/SOROLLA/Ref_Genomes/GRCh37/
+/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/
+
+# Ignore full results from softwares (only keep csv files)
+/home/maria/git/SOROLLA/Results/CONTROLS/*.log
+/home/maria/git/SOROLLA/Results/Gnova/
+/home/maria/git/SOROLLA/Results/ldsc/
+/home/maria/git/SOROLLA/Results/HDL/
+/home/maria/git/SOROLLA/Results/plots/
+
+# Csv not ready to share
+/home/maria/git/SOROLLA/Results/gnova_genetic_correlation.csv
+/home/maria/git/SOROLLA/Results/HDL_genetic_correlation.csv
+
+# Scripts unready or unable to share
+/home/maria/git/SOROLLA/scripts/FIX/
+/home/maria/git/SOROLLA/scripts/GNOVA/
+/home/maria/git/SOROLLA/scripts/HDL/
+/home/maria/git/SOROLLA/scripts/ldsc/
+/home/maria/git/SOROLLA/scripts/gwas_rehab.ipynb
+
+# From sumstats ignore all files except excell_sumstats_description.csv, the others are outputted.
+/home/maria/git/SOROLLA/SumStats/PAST_CSV/
+/home/maria/git/SOROLLA/SumStats/Munged/
+/home/maria/git/SOROLLA/SumStats/RAW/
+/home/maria/git/SOROLLA/SumStats/Wrangled/
+/home/maria/git/SOROLLA/SumStats/final_sumstats_description.csv
+/home/maria/git/SOROLLA/SumStats/paired_datasets.csv
