@@ -89,6 +89,7 @@ The csv datasets inside the SumStats folder are (in order of creation and use):
 
 1. Change the config file to match the local paths. Not all scripts have been automatised.
 
-2. Follow the pipeline 
-[Pipeline]()
+2. Follow the pipeline showing the initial files needed and the commands to run the pipeline. You will first need to modify the config file to match your structure.
+
+![Pipeline](Pipeline-v1.png)
 
