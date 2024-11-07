@@ -1,0 +1,342 @@
+---
+title: "GWAS CATALOG"
+output: html_document
+date: "2024-05-03"
+---
+
+```{r setup, include=FALSE}
+library(readr)
+library(dplyr)
+library(stringr)
+
+```
+
+
+# Load the csv file
+Here the dataset (csv file from GWAS catalog) is loaded. Change the path accordingly.
+```{r}
+full_catalog <- readr::read_tsv("/home/maria/git/SOROLLA/SumStats/PAST_CSV/summary_statistics_table_export.tsv", num_threads = 1)
+```
+
+## Clean the data and only keep the rows that are relevant
+We are only interested in European populations and data from GWAS, so we are going to exclude all the data that does not match these characteristics.
+```{r}
+#Filter by technology (only interested GWGA)
+filtered_catalog <- full_catalog %>%
+               filter(grepl("Genome-wide genotyping array", genotypingTechnologies, fixed = TRUE) &
+                        !grepl("Exome-wide sequencing", genotypingTechnologies, fixed = TRUE) &
+                        #Include and exclude ancestries
+                        grepl("European", discoverySampleAncestry, fixed = TRUE) & 
+                        !grepl("Asian", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("Latin", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("Hispanic", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("African", discoverySampleAncestry, fixed = TRUE) &
+                        !grepl("NR", discoverySampleAncestry, fixed = TRUE))
+head(filtered_catalog)
+
+#Extract numeric part and nationality, and add as new columns
+filtered_catalog <- filtered_catalog %>%
+               mutate(SampleSize = as.numeric(gsub("\\D", "", discoverySampleAncestry)),
+                      Ancestry = gsub("\\d", "", discoverySampleAncestry))
+
+#Filter the SampleSize to at least 10K
+filtered_catalog <- filtered_catalog %>%
+                filter(SampleSize >= 5000)
+
+# Save filtered_catalog as a CSV file
+write.csv(filtered_catalog, "/home/maria/git/SOROLLA/SumStats/FM_filtered_catalog.csv", row.names = FALSE)
+
+# Confirmation message
+cat("filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/FM_filtered_catalog.csv'")
+
+```
+Now create another dataframe filtering with the desired keywords.
+(old)
+terms <- c(
+  "ADHD", "attention deficit", "hyperactivity", "ADD", "Anxiety", "Panic", "Autism", "Asperger", "Bipolar", "Depression", 
+  "Manic", "Brain", "Cancer", "Neoplasm", "Carcinoma", "insanity", "cerebral", "central nervous", "malignancy", "psychosis", 
+  "Pervasive Developmental Disorder", "breast", "colorectal", "colon", "anal", "rectal", "depression", "mood", "endometrial", 
+  "endometrium", "endometriosis", "uterine", "uterus", "cervix", "cervical", "kidney", "liver", "hepatic", "ovarian", "ovaries", 
+  "ovary", "pancreas", "pancreatic", "prostate", "testicular", "testis", "endocrine", "Schizophrenia", "psychotic", "thyroid", 
+  "leukemia", "lymphoma", "melanoma", "sarcoma", "lung", "stomach", "stomacal", "gastrointestinal", "intestines", "gastric", 
+  "cancerous", "tumor", "malignant", "benign", "metastasis", "gastrointestinal tract", "gastroenterology", "digestive system", 
+  "esophagus", "stomach", "small intestine", "large intestine", "colon", "rectum", "anus", "liver", "gallbladder", "pancreas", 
+  "bile ducts", "duodenum", "jejunum", "ileum", "cecum", "appendix", "rectum", "peritoneum", "lymph", "lymphatic", "hepatic", 
+  "hepatocellular", "gut", "intestinal", "microbiota", "microbiome"
+)
+```{r}
+# Define the terms to search for
+
+terms <- c(
+  "ADHD", "attention deficit", "hyperactivity", "ADD", "Anxiety", "Panic", "Autism", "Asperger", "Bipolar", "Depression", 
+  "Manic", "Brain", "Cancer", "Neoplasm", "Carcinoma", "insanity", "cerebral", "central nervous", "malignancy", "psychosis", 
+  "Pervasive Developmental Disorder", "breast", "colorectal", "colon", "anal", "rectal", "depression", "mood", "endometrial", 
+  "endometrium", "endometriosis", "uterine", "uterus", "cervix", "cervical", "kidney", "liver", "hepatic", "ovarian", "ovaries", 
+  "ovary", "pancreas", "pancreatic", "prostate", "testicular", "testis", "endocrine", "Schizophrenia", "psychotic", "thyroid", 
+  "leukemia", "lymphoma", "melanoma", "sarcoma", "lung", "stomach", "stomacal", "gastrointestinal", "intestines", "gastric", 
+  "cancerous", "tumor", "malignant", "benign", "metastasis", "gastrointestinal tract", "gastroenterology", "digestive system", 
+  "esophagus", "stomach", "small intestine", "large intestine", "colon", "rectum", "anus", "liver", "gallbladder", "pancreas", 
+  "bile ducts", "duodenum", "jejunum", "ileum", "cecum", "appendix", "rectum", "peritoneum", "lymph", "lymphatic", "hepatic", 
+  "hepatocellular"
+)
+
+```
+
+An addition to make the list more exhaustive:
+```{r}
+CNS <- c(
+  "Alzheimer's disease", "Alzheimer disease", "Alzheimers", "Alzheimer", "Parkinson's disease", "Parkinson disease", "Parkinsons", "Parkinson",
+  "Multiple sclerosis", "MS", "Amyotrophic lateral sclerosis", "ALS", "Lou Gehrig's disease", "Motor neuron disease", "MND", 
+  "Epilepsy", "Seizure disorder", "Migraine", "Headache", "Cluster headache", "Tension headache", 
+  "Dementia", "Frontotemporal dementia", "Vascular dementia", "Huntington's disease", "Huntington disease", "Huntingtons", "Huntington", 
+  "Stroke", "Ischemic stroke", "Hemorrhagic stroke", "Brain injury", "Traumatic brain injury", "Encephalitis", "Meningitis", "Brain infection",
+  "Neurodegeneration", "Neurodegenerative disease", "Cerebral palsy", "CP","Ataxia", "Cerebellar ataxia", "Spinocerebellar ataxia", 
+  "Friedreich's ataxia", "Friedreichs ataxia", "Tourette syndrome", "Tremor", "Essential tremor", 
+  "Myasthenia gravis", "Nerve disorder", "Neuropathy", "Peripheral neuropathy", "Neuromuscular disorder", "Neuromuscular disease", 
+  "Brain tumor", "Benign brain tumor", "Malignant brain tumor", "Glioma", "Meningioma", "Astrocytoma", "Oligodendroglioma", "Ependymoma", 
+  "Medulloblastoma", "Neuroblastoma", "Pituitary tumor", "Pituitary adenoma", "Schwannoma", "Vestibular schwannoma", "Acoustic neuroma", 
+  "Neurofibroma", "Brainstem glioma", "Pontine glioma", "Spinal cord tumor", "Intramedullary tumor", "Extramedullary tumor", "Dystonia", 
+  "Restless legs syndrome", "RLS", "Chronic traumatic encephalopathy", "CTE", "Spinal muscular atrophy", "SMA", "Muscular dystrophy", 
+  "Duchenne muscular dystrophy", "DMD", "Becker muscular dystrophy", "BMD", "Neurofibromatosis", "NF", "NF1", "NF2", 
+  "Neurocutaneous disorder", "Tuberous sclerosis", "Recklinghausen disease", "Guillain-Barré syndrome", "Guillain-Barre syndrome", 
+  "Guillain-Barre", "Chronic inflammatory demyelinating polyneuropathy", "CIDP", "Charcot-Marie-Tooth disease", "Charcot-Marie-Tooth syndrome",
+  "CMT", "Neuritis", "Encephalopathy", "Encephalomyelitis", "Central sleep apnea", "Narcolepsy", "Trigeminal neuralgia", "Bell's palsy", 
+  "Bells palsy", "Rett syndrome", "Tay-Sachs disease", "Tay Sachs disease", "Tay-Sachs", "Tay Sachs", "Canavan disease", 
+  "Krabbe disease", "Metachromatic leukodystrophy", "Prion disease", "Creutzfeldt-Jakob disease", "Creutzfeldt-Jakob", 
+  "Normal pressure hydrocephalus", "NPH", "Intracranial hypertension", "Pseudotumor cerebri", "Chiari malformation","Dandy-Walker syndrome", 
+  "Dandy Walker syndrome", "Tethered cord syndrome", "Aneurysm", "Arteriovenous malformation", "AVM", 
+  "Cavernous malformation", "Cavernoma", "Hydrocephalus", "Anencephaly", "Spina bifida", "Encephalocele", "Holoprosencephaly", 
+  "Lissencephaly", "Pachygyria", "Polymicrogyria", "Schizencephaly", "Microcephaly", "Hydranencephaly", 
+  "Agenesis of the corpus callosum", "Dysgenesis of the corpus callosum", "Corpus callosum agenesis", 
+  "Cerebellar hypoplasia", "Pontocerebellar hypoplasia", "Dandy-Walker malformation", "Dandy Walker malformation", 
+  "Arachnoid cyst"
+)
+
+
+PSY <- c(
+  "Schizophrenia", 
+  "Bipolar disorder", "Bipolar", "Manic depression", 
+  "Major depressive disorder", "MDD", "Depression", "Clinical depression", "Unipolar depression", 
+  "Anxiety disorder", "Generalized anxiety disorder", "GAD", "Anxiety", 
+  "Obsessive-compulsive disorder", "OCD", 
+  "Post-traumatic stress disorder", "PTSD", "Post traumatic stress disorder", 
+  "Attention-deficit/hyperactivity disorder", "ADHD", 
+  "Autism spectrum disorder", "ASD", "Autism", 
+  "Personality disorder", 
+  "Borderline personality disorder", "BPD", 
+  "Antisocial personality disorder", "APD", 
+  "Paranoid personality disorder", 
+  "Histrionic personality disorder", 
+  "Narcissistic personality disorder", 
+  "Schizoaffective disorder", 
+  "Delusional disorder", 
+  "Panic disorder", 
+  "Agoraphobia", 
+  "Social anxiety disorder", "Social phobia", 
+  "Selective mutism", 
+  "Psychosis", 
+  "Hallucination", 
+  "Delusion", 
+  "Dissociative identity disorder", "Multiple personality disorder", "Dissociative disorder", 
+  "Conversion disorder", 
+  "Somatic symptom disorder", "Somatization disorder", 
+  "Psychosomatic disorder", 
+  "Neurocognitive disorder", "Cognitive disorder"
+)
+
+
+CAN <- c(
+  "Breast cancer", "Breast carcinoma", "Breast tumor", 
+  "Lung cancer", "Lung carcinoma", 
+  "Prostate cancer", "Prostate carcinoma", 
+  "Colorectal cancer", "Colon cancer", "Rectal cancer", 
+  "Liver cancer", "Hepatocellular carcinoma", 
+  "Stomach cancer", "Gastric cancer", 
+  "Pancreatic cancer", "Pancreatic carcinoma", 
+  "Ovarian cancer", "Ovarian carcinoma", 
+  "Endometrial cancer", "Uterine cancer", 
+  "Bladder cancer", "Bladder carcinoma", 
+  "Kidney cancer", "Renal cancer", "Renal cell carcinoma", 
+  "Esophageal cancer", "Esophageal carcinoma", 
+  "Head and neck cancer", 
+  "Thyroid cancer", "Thyroid carcinoma", 
+  "Melanoma", "Skin cancer", "Cutaneous melanoma", 
+  "Non-Hodgkin lymphoma", "NHL", 
+  "Hodgkin lymphoma", "Hodgkin's disease", 
+  "Leukemia", 
+  "Acute lymphoblastic leukemia", "ALL", 
+  "Chronic lymphocytic leukemia", "CLL", 
+  "Acute myeloid leukemia", "AML", 
+  "Chronic myeloid leukemia", "CML", 
+  "Multiple myeloma", 
+  "Testicular cancer", "Testicular tumor", "Testicular carcinoma", 
+  "Penile cancer", 
+  "Sarcoma", "Soft tissue sarcoma", 
+  "Bone cancer", "Osteosarcoma", 
+  "Brain cancer", "Central nervous system cancer", "CNS cancer", 
+  "Neuroblastoma", 
+  "Wilms' tumor", "Wilms tumor", 
+  "Retinoblastoma", 
+  "Hepatoblastoma", 
+  "Choriocarcinoma", 
+  "Germ cell tumor", "Germinoma", "Embryonal carcinoma", "Yolk sac tumor", 
+  "Carcinoid tumor", 
+  "Thymoma", 
+  "Mesothelioma", 
+  "Kaposi's sarcoma"
+)
+
+
+ADD <- c(
+  "Angiosarcoma", 
+  "Chondrosarcoma", 
+  "Ewing sarcoma", 
+  "Fibrosarcoma", 
+  "Gastrointestinal stromal tumor", "GIST", 
+  "Histiocytoma", 
+  "Liposarcoma", 
+  "Melanotic neuroectodermal tumor", 
+  "Myxofibrosarcoma", 
+  "Neuroendocrine tumor", 
+  "Osteosarcoma", 
+  "Pheochromocytoma", 
+  "Salivary gland cancer", 
+  "Testicular germ cell tumor", 
+  "Thyroid carcinoma", 
+  "Uveal melanoma", 
+  "Vulvar cancer", 
+  "Appendix cancer", 
+  "Biliary tract cancer", 
+  "Cervical cancer", 
+  "Cholangiocarcinoma", 
+  "Endometrial carcinoma", 
+  "Epithelial ovarian cancer", 
+  "Gestational trophoblastic disease", 
+  "Malignant pleural mesothelioma", 
+  "Neurofibrosarcoma", 
+  "Pleomorphic sarcoma", 
+  "Primitive neuroectodermal tumor", "PNET", 
+  "Reticulum cell sarcoma", 
+  "Sinonasal cancer", 
+  "Synovial sarcoma", 
+  "Thyroid papillary carcinoma", 
+  "Thyroid follicular carcinoma"
+)
+
+
+ALL <- c(CNS,PSY,CAN,ADD)
+complete <- c(terms, ALL)
+```
+
+
+
+```{r}
+# Function to check if any term is present in a string (case-insensitive)
+check_terms <- function(string) {
+  # Convert both the string and terms to lower case for case-insensitive comparison
+  string <- as.character(string)
+  terms_lower <- tolower(complete)
+  # Check if any term is present in the string
+  any(grepl(paste(terms_lower, collapse="|"), string, ignore.case=TRUE))
+}
+
+# Filter dataframe to rows where any of the terms are present in "reportedTrait" or "efoTraits" (corrected column name)
+matches <- sapply(1:nrow(filtered_catalog), function(i) {
+  check_terms(filtered_catalog[i, "reportedTrait"]) || check_terms(filtered_catalog[i, "efoTraits"])
+})
+
+words_filtered_catalog <- filtered_catalog[matches, ]
+print(words_filtered_catalog)
+
+```
+
+```{r}
+# Save filtered_catalog as a CSV file
+write.csv(words_filtered_catalog, "/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv", row.names = FALSE)
+
+# Confirmation message
+cat("words_filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv'")
+```
+
+```{r}
+df <- read.csv("/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv")
+```
+
+
+```{r}
+# Function to extract numbers and update Nca_val or Nco_val
+extract_and_update <- function(description) {
+  # Remove commas from the description
+  description <- gsub(",", "", description)
+  
+  Nca_val <- ifelse(grepl("cases", description, ignore.case = TRUE),
+                    as.numeric(str_extract(description, "\\d+(?=\\s*European ancestry cases)")),
+                    NA)
+  Nco_val <- ifelse(grepl("controls", description, ignore.case = TRUE),
+                    as.numeric(str_extract(description, "\\d+(?=\\s*European ancestry controls)")),
+                    NA)
+  
+  return(data.frame(Nca_val = Nca_val, Nco_val = Nco_val))
+}
+
+# Apply function to populate Nca_val and Nco_val columns
+df <- df %>%
+  mutate(extracted_vals = extract_and_update(initialSampleDescription),
+         Nca_val = extracted_vals$Nca_val,
+         Nco_val = extracted_vals$Nco_val) %>%
+  select(-extracted_vals)
+
+```
+
+```{r}
+write.csv(df, "/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv", row.names = FALSE)
+
+```
+
+
+# Now we filter through the ones that I had already annotated somehow (because I just want to add new ones) and also through the Fabian ones.
+
+```{r}
+#Load annotated dataset with Yes/not enough N...
+annotated <- read.csv("/home/maria/git/SOROLLA/SumStats/PAST_CSV/annotated_past_catalog.csv")
+Fabian <- read_csv("/home/maria/git/HDL-scripting/R/Datasets-info.csv")
+```
+
+remove_list <- annotated %>%
+  filter(SelectionFilter %in% c("N not enough", "Unsure", "not specific", "Not relevant", "Not SNP", "MICROBIOME")) %>%
+  pull(accessionId)
+
+words_filtered_from_annotated <- df %>%
+  # Keep rows where AccessionId is not in the list
+  filter(!(accessionId %in% remove_list))
+
+words_filtered_from_annotated <- words_filtered_from_annotated %>%
+  # Keep rows where AccessionId is not in the list
+  filter(!(efoTraits %in% complete))
+
+```{r}
+list_ids_remove <- annotated$accessionId
+df_clean <- df %>%
+  filter(!(accessionId %in% list_ids_remove))
+```
+
+
+
+```{r}
+df_clean <- df_clean %>%
+  # Keep rows where AccessionId is not in the list
+  filter(!(efoTraits == "blood protein measurement"))
+
+df_clean <- df_clean %>%
+  # Keep rows where AccessionId is not in the list
+  filter(!(efoTraits == "intestinal infectious diseases"))
+
+df_clean <- df_clean[!grepl("measurement", df_clean$efoTraits), ]
+
+```
+
+```{r}
+write.csv(df_clean, "/home/maria/git/SOROLLA/SumStats/PAST_CSV/FM_words_filtered_catalog_clean.csv", row.names = FALSE)
+
+```
+
