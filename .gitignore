@@ -2,15 +2,50 @@
 __pycache__
 config/.ipynb_checkpoints
 typescript
+scripts/CONTROLS/.ipynb_checkpoints
+config/base_env.yml
+config/MR_requirements.yml
+config/base.yml
 
-# Ignore files from Fabian's results
-Fabian/
+# Ignore files from Fabian's and test results
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ldsc-B/
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ldsc-Z/
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/MUNGED-B/
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/MUNGED-Z/
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/*.csv
+ROBUSTNESS_TESTS/TEST_REPEATED/ldsc_test*/
+ROBUSTNESS_TESTS/TEST_REPEATED/MUNGED*/
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/ldsc/
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/duplicated_sumstats_description.csv
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/final_sumstats_description_imputed_beta_se_from_OR.csv
+ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/paired_datasets_*.csv
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_description_tes*.csv
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_pairs_test.py
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_results_test.py
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_ldsc_test.py
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_munge_test.py
+ROBUSTNESS_TESTS/TEST_REPEATED/repeat_pair_diseases_test*.csv
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ZB_ldsc_test.py
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ZB_munge_test.py
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ZB_pairs_test.py
+ROBUSTNESS_TESTS/TEST_ZETA-BETA/ZB_results_test.py
+ROBUSTNESS_TESTS/TEST_BULIK/ldsc_read_results_extract_gencor.py
+ROBUSTNESS_TESTS/TEST_BULIK/ldsc_run_pairs_automatised.py
+ROBUSTNESS_TESTS/TEST_BULIK/sumstats_test_ldsc.csv
+ROBUSTNESS_TESTS/TEST_BULIK/test_create_pairs_diseases.py
+ROBUSTNESS_TESTS/TEST_BULIK/test_ldsc_munge_sumstats_from_csv.py
+ROBUSTNESS_TESTS/TEST_BULIK/test_ldsc_paired_datasets.csv
 
 # Ignore reference files except doc showing locations
 Ref_Genomes/1000G_Phase3_LD_scores/
 Ref_Genomes/eur_w_ld_chr/
 Ref_Genomes/GRCh37/
 Ref_Genomes/HapMap3/
+Ref_Genomes/plink/
+Ref_Genomes/UKB_imputed_SVD_eigen99_extraction/
+Ref_Genomes/genotype.zip
 
 # Ignore full results from softwares (only keep csv files)
 Results/CONTROLS/*.log
@@ -18,10 +53,16 @@ Results/Gnova/
 Results/ldsc/
 Results/HDL/
 Results/plots/
+Results/MR/
+Results/old_gnova/
+Results/old_hdl/
+Results/old_ldsc/
+Results/Supergnova/ 
 
 # Csv not ready to share
 Results/gnova_genetic_correlation.csv
 Results/HDL_genetic_correlation.csv
+Results/ldsc_genetic_correlation_corrected_old1.csv
 
 # Scripts unready or unable to share
 ## Unable to share
@@ -29,19 +70,20 @@ scripts/FIX/
 scripts/GNOVA/
 scripts/HDL/
 scripts/ldsc/
+scripts/CONTROLS/
+scripts/SUPERGNOVA/
+scripts/OLD_OR_DISCARDED/
+scripts/JOBS_MN/
 
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints
-scripts/pipeline/2_add_Ncol.py
-scripts/gwas_rehab.ipynb
-scripts/pipeline/5B_HDL_run_pairs_automatised.r
-scripts/pipeline/6B_HDL_read_results_extract_gencor.py
-scripts/pipeline/6C_gnova_read_results_extract_gencor.py
+
 
 # From sumstats ignore all files except excell_sumstats_description.csv, the others are outputted.
 SumStats/PAST_CSV/
 SumStats/Munged/
 SumStats/RAW/
 SumStats/Wrangled/
-SumStats/final_sumstats_description.csv
 SumStats/paired_datasets.csv
+SumStats/reference_class_ids.csv
+SumStats/supergnova_paired_datasets.csv
