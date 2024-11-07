@@ -1,0 +1,162 @@
+This is the unmodified version for the dataset PGC-BIP-2021_BIP-PGC-2021
+  CHR        SNP           BP A1 A2  FRQ_A_40463  FRQ_U_313436   INFO  \
+0   1  rs2582784  120324506.0  G  A        0.703         0.689  0.990   
+1   1   rs478450  120233922.0  G  A        0.428         0.421  0.997   
+
+        OR      SE       P  ngt  \
+0  0.99134  0.0104  0.4036  1.0   
+1  0.99880  0.0094  0.8982  1.0   
+
+                                                  Direction  HetISqt  HetDf  \
+0  --+-++-++-+-+-+-++++?++++--++-++++-++-+-+---+-++++-++-++      6.2   54.0   
+1  -++++-+-++---+-+-+--++--++-+-----++-+-++-+-+++++--++++-+     22.1   55.0   
+
+   HetPVa      Nca       Nco  Neff_half  
+0  0.3451  39543.0  312463.0   47198.70  
+1  0.0763  40463.0  313436.0   48144.46  
+CHR              object
+SNP              object
+BP              float64
+A1               object
+A2               object
+FRQ_A_40463     float64
+FRQ_U_313436    float64
+INFO            float64
+OR              float64
+SE              float64
+P               float64
+ngt             float64
+Direction        object
+HetISqt         float64
+HetDf           float64
+HetPVa          float64
+Nca             float64
+Nco             float64
+Neff_half       float64
+dtype: object
+Calculating beta and standard error
+The data has been converted to numeric
+The data has been converted to numeric or was considered numeric
+This is the modified version for the dataset PGC-BIP-2021_BIP-PGC-2021
+  CHR        SNP           BP A1 A2  FRQ_A_40463  FRQ_U_313436   INFO  \
+0   1  rs2582784  120324506.0  G  A        0.703         0.689  0.990   
+1   1   rs478450  120233922.0  G  A        0.428         0.421  0.997   
+
+        OR      SE       P  ngt  \
+0  0.99134  0.0104  0.4036  1.0   
+1  0.99880  0.0094  0.8982  1.0   
+
+                                                  Direction  HetISqt  HetDf  \
+0  --+-++-++-+-+-+-++++?++++--++-++++-++-+-+---+-++++-++-++      6.2   54.0   
+1  -++++-+-++---+-+-+--++--++-+-----++-+-++-+-+++++--++++-+     22.1   55.0   
+
+   HetPVa      Nca       Nco  Neff_half  beta_added    sebeta  
+0  0.3451  39543.0  312463.0   47198.70   -0.008698  0.010492  
+1  0.0763  40463.0  313436.0   48144.46   -0.001201  0.009412  
+The dataset is being saved
+Dataset /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz has been modified with beta and SE columns.
+Saving the modification to the row of the reference csv
+Error writing file /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz: name 'main_csv_path' is not defined
+The file path is: {'/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz'}
+The compression file is: gzip
+The dataset separator is: '	'
+Opening the dataset
+This is the unmodified version for the dataset GCST001241_BIP-PGC-2011
+                                                      snpid hg18chr bp a1 a2 or se pval info ngt CEUaf 
+rs12565286 1 711153 C G 0.9887 0.0821 0.8899 0.3693 0                                            0.0678
+rs11804171 1 713682 A T 0.9887 0.0821 0.8899 0.3693 0                                                 .
+snpid hg18chr bp a1 a2 or se pval info ngt CEUaf     object
+dtype: object
+Column 'or' is required but not found in the dataset BIP-PGC-2011
+The file path is: {'/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz'}
+The compression file is: gzip
+The dataset separator is: '	'
+Opening the dataset
+This is the unmodified version for the dataset GCST90011804_breast-carcinoma-1
+   chromosome  base_pair_location       uniqID effect_allele other_allele  n  \
+0           1               13327  1:13327_C_G             G            C  1   
+1           1               13980  1:13980_C_T             T            C  1   
+
+    p_value  P_random  odds_ratio  OR_random   Q   I   variant_id   totN  
+0  0.028970  0.028970      1.2999     1.2999 NaN NaN  rs144762171  33779  
+1  0.006851  0.006851      1.4909     1.4909 NaN NaN  rs151276478  33779  
+chromosome              int64
+base_pair_location      int64
+uniqID                 object
+effect_allele          object
+other_allele           object
+n                       int64
+p_value               float64
+P_random              float64
+odds_ratio            float64
+OR_random             float64
+Q                     float64
+I                     float64
+variant_id             object
+totN                    int64
+dtype: object
+Calculating beta and standard error
+The data has been converted to numeric
+The data has been converted to numeric or was considered numeric
+This is the modified version for the dataset GCST90011804_breast-carcinoma-1
+   chromosome  base_pair_location       uniqID effect_allele other_allele  n  \
+0           1               13327  1:13327_C_G             G            C  1   
+1           1               13980  1:13980_C_T             T            C  1   
+
+    p_value  P_random  odds_ratio  OR_random   Q   I   variant_id   totN  \
+0  0.028970  0.028970      1.2999     1.2999 NaN NaN  rs144762171  33779   
+1  0.006851  0.006851      1.4909     1.4909 NaN NaN  rs151276478  33779   
+
+   beta_added  sebeta  
+0    0.262287     NaN  
+1    0.399380     NaN  
+The dataset is being saved
+Dataset /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz has been modified with beta and SE columns.
+Saving the modification to the row of the reference csv
+Error writing file /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz: name 'main_csv_path' is not defined
+The file path is: {'/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz'}
+The compression file is: gzip
+The dataset separator is: '	'
+Opening the dataset
+This is the unmodified version for the dataset GCST90011816_cervical-cancer-2
+   chromosome  base_pair_location       uniqID effect_allele other_allele  n  \
+0           1               13327  1:13327_C_G             G            C  1   
+1           1               13980  1:13980_C_T             T            C  1   
+
+   p_value  P_random  odds_ratio  OR_random   Q   I   variant_id   totN  
+0   0.8443    0.8443      1.0577     1.0577 NaN NaN  rs144762171  30366  
+1   0.9415    0.9415      1.0247     1.0247 NaN NaN  rs151276478  30366  
+chromosome              int64
+base_pair_location      int64
+uniqID                 object
+effect_allele          object
+other_allele           object
+n                       int64
+p_value               float64
+P_random              float64
+odds_ratio            float64
+OR_random             float64
+Q                     float64
+I                     float64
+variant_id             object
+totN                    int64
+dtype: object
+Calculating beta and standard error
+The data has been converted to numeric
+The data has been converted to numeric or was considered numeric
+This is the modified version for the dataset GCST90011816_cervical-cancer-2
+   chromosome  base_pair_location       uniqID effect_allele other_allele  n  \
+0           1               13327  1:13327_C_G             G            C  1   
+1           1               13980  1:13980_C_T             T            C  1   
+
+   p_value  P_random  odds_ratio  OR_random   Q   I   variant_id   totN  \
+0   0.8443    0.8443      1.0577     1.0577 NaN NaN  rs144762171  30366   
+1   0.9415    0.9415      1.0247     1.0247 NaN NaN  rs151276478  30366   
+
+   beta_added  sebeta  
+0    0.056097     NaN  
+1    0.024400     NaN  
+The dataset is being saved
+Dataset /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz has been modified with beta and SE columns.
+Saving the modification to the row of the reference csv
+Error writing file /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz: name 'main_csv_path' is not defined

@@ -1,0 +1,1615 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--frq effect_allele_frequency \
+--chunksize 500000 \
+--N 63053.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST004750.tsv \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST004750.tsv into memory 500000 SNPs at a time.
+................ done
+Read 7865405 SNPs from --sumstats file.
+Removed 6746965 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 1 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1118439 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1118439 SNPs remain).
+Using N = 63053.0
+Median value of SIGNED_SUMSTATS was 1.000535, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1118439 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1118439 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.113
+Lambda GC = 1.083
+Max chi^2 = 181.321
+212 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:54:08 2024
+Total time elapsed: 35.83s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST004750.tsv', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '63053', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--frq effect_allele_frequency \
+--chunksize 500000 \
+--N 63053.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST004750.tsv \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST004750.tsv into memory 500000 SNPs at a time.
+................ done
+Read 7865405 SNPs from --sumstats file.
+Removed 6746965 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 1 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1118439 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1118439 SNPs remain).
+Using N = 63053.0
+Median value of SIGNED_SUMSTATS was 0.000534856938523, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1118439 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1118439 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.113
+Lambda GC = 1.083
+Max chi^2 = 181.321
+212 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:54:46 2024
+Total time elapsed: 37.59s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '92957', '--N-cas', '29475', '--N-cas-col', 'n_case', '--N-con', '63482', '--N-con-col', 'n_control', '--signed-sumstats', 'beta,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 63482.0 \
+--chunksize 500000 \
+--N-cas 29475.0 \
+--N 92957.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+beta:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10016 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177577 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177577 SNPs remain).
+Removed 0 SNPs with N < 61971.3333333 (1177577 SNPs remain).
+Median value of SIGNED_SUMSTATS was 9.23183534316e-05, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177575 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177575 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.164
+Lambda GC = 1.149
+Max chi^2 = 28.604
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:55:34 2024
+Total time elapsed: 47.22s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '92957', '--N-cas', '29475', '--N-cas-col', 'n_case', '--N-con', '63482', '--N-con-col', 'n_control', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 63482.0 \
+--chunksize 500000 \
+--N-cas 29475.0 \
+--N 92957.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10016 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177577 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177577 SNPs remain).
+Removed 0 SNPs with N < 61971.3333333 (1177577 SNPs remain).
+Median value of SIGNED_SUMSTATS was 1.00009, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177575 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177575 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.164
+Lambda GC = 1.149
+Max chi^2 = 28.604
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:56:22 2024
+Total time elapsed: 47.41s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '92957', '--N-cas', '29475', '--N-cas-col', 'n_case', '--N-con', '63482', '--N-con-col', 'n_control', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 63482.0 \
+--chunksize 500000 \
+--N-cas 29475.0 \
+--N 92957.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009979.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10016 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177577 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177577 SNPs remain).
+Removed 0 SNPs with N < 61971.3333333 (1177577 SNPs remain).
+Median value of SIGNED_SUMSTATS was 8.99959502429e-05, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177575 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177575 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.164
+Lambda GC = 1.149
+Max chi^2 = 28.604
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:57:12 2024
+Total time elapsed: 49.26s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '24094', '--N-cas', '13393', '--N-cas-col', 'n_case', '--N-con', '10701', '--N-con-col', 'n_control', '--signed-sumstats', 'beta,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 10701.0 \
+--chunksize 500000 \
+--N-cas 13393.0 \
+--N 24094.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+beta:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 9920 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177673 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177673 SNPs remain).
+Removed 0 SNPs with N < 16062.6666667 (1177673 SNPs remain).
+Median value of SIGNED_SUMSTATS was 4.56742658541e-05, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177671 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177671 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.054
+Lambda GC = 1.053
+Max chi^2 = 23.529
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:58:05 2024
+Total time elapsed: 52.81s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '24094', '--N-cas', '13393', '--N-cas-col', 'n_case', '--N-con', '10701', '--N-con-col', 'n_control', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 10701.0 \
+--chunksize 500000 \
+--N-cas 13393.0 \
+--N 24094.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 9920 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177673 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177673 SNPs remain).
+Removed 0 SNPs with N < 16062.6666667 (1177673 SNPs remain).
+Median value of SIGNED_SUMSTATS was 1.00005, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177671 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177671 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.054
+Lambda GC = 1.053
+Max chi^2 = 23.529
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:58:55 2024
+Total time elapsed: 49.07s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '24094', '--N-cas', '13393', '--N-cas-col', 'n_case', '--N-con', '10701', '--N-con-col', 'n_control', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 10701.0 \
+--chunksize 500000 \
+--N-cas 13393.0 \
+--N 24094.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009980.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 9920 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177673 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177673 SNPs remain).
+Removed 0 SNPs with N < 16062.6666667 (1177673 SNPs remain).
+Median value of SIGNED_SUMSTATS was 4.99987500418e-05, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177671 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177671 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.054
+Lambda GC = 1.053
+Max chi^2 = 23.529
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 17:59:45 2024
+Total time elapsed: 49.22s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '49164', '--N-cas', '9487', '--N-cas-col', 'n_case', '--N-con', '39677', '--N-con-col', 'n_control', '--signed-sumstats', 'beta,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 39677.0 \
+--chunksize 500000 \
+--N-cas 9487.0 \
+--N 49164.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+beta:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10111 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177482 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177482 SNPs remain).
+Removed 0 SNPs with N < 32776.0 (1177482 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.000105768097315, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177480 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177480 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.047
+Lambda GC = 1.046
+Max chi^2 = 26.541
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:00:33 2024
+Total time elapsed: 47.7s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '49164', '--N-cas', '9487', '--N-cas-col', 'n_case', '--N-con', '39677', '--N-con-col', 'n_control', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 39677.0 \
+--chunksize 500000 \
+--N-cas 9487.0 \
+--N 49164.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10111 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177482 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177482 SNPs remain).
+Removed 0 SNPs with N < 32776.0 (1177482 SNPs remain).
+Median value of SIGNED_SUMSTATS was 1.00011, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177480 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177480 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.047
+Lambda GC = 1.046
+Max chi^2 = 26.541
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:01:21 2024
+Total time elapsed: 47.18s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '49164', '--N-cas', '9487', '--N-cas-col', 'n_case', '--N-con', '39677', '--N-con-col', 'n_control', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col n_control \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col n_case \
+--frq effect_allele_frequency \
+--N-con 39677.0 \
+--chunksize 500000 \
+--N-cas 9487.0 \
+--N 49164.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+p_value:	p-Value
+n_case:	Number of cases
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+n_control:	Number of controls
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST009981.tsv.gz into memory 500000 SNPs at a time.
+................ done
+Read 7790497 SNPs from --sumstats file.
+Removed 6602823 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 81 SNPs with INFO <= 0.9.
+Removed 10111 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1177482 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1177482 SNPs remain).
+Removed 0 SNPs with N < 32776.0 (1177482 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.000109993950444, which seems sensible.
+Removed 2 SNPs whose alleles did not match --merge-alleles (1177480 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1177480 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.047
+Lambda GC = 1.046
+Max chi^2 = 26.541
+0 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:02:09 2024
+Total time elapsed: 47.79s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz', '--snp', 'rsid', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p', '--N', '26621', '--signed-sumstats', 'beta,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--chunksize 500000 \
+--N 26621.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp rsid \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz \
+--ignore z \
+--p p 
+
+Interpreting column names as follows:
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+p:	p-Value
+rsid:	Variant ID (e.g., rs number)
+beta:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz into memory 500000 SNPs at a time.
+. done
+Read 464357 SNPs from --sumstats file.
+Removed 8648 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+455709 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (455709 SNPs remain).
+Using N = 26621.0
+Median value of SIGNED_SUMSTATS was -0.000200020002667, which seems sensible.
+Removed 17 SNPs whose alleles did not match --merge-alleles (455692 SNPs remain).
+Writing summary statistics for 1217311 SNPs (455692 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.111
+Lambda GC = 1.039
+Max chi^2 = 1116.243
+161 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:02:23 2024
+Total time elapsed: 13.74s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz', '--snp', 'rsid', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p', '--N', '26621', '--signed-sumstats', 'OR,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats OR,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--chunksize 500000 \
+--N 26621.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp rsid \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz \
+--ignore z \
+--p p 
+
+Interpreting column names as follows:
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+p:	p-Value
+rsid:	Variant ID (e.g., rs number)
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+OR:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz into memory 500000 SNPs at a time.
+. done
+Read 464357 SNPs from --sumstats file.
+Removed 8648 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+455709 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (455709 SNPs remain).
+Using N = 26621.0
+Median value of SIGNED_SUMSTATS was 0.9998, which seems sensible.
+Removed 17 SNPs whose alleles did not match --merge-alleles (455692 SNPs remain).
+Writing summary statistics for 1217311 SNPs (455692 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.111
+Lambda GC = 1.039
+Max chi^2 = 1116.243
+161 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:02:36 2024
+Total time elapsed: 12.67s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz', '--snp', 'rsid', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p', '--N', '26621', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--chunksize 500000 \
+--N 26621.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp rsid \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz \
+--ignore z \
+--p p 
+
+Interpreting column names as follows:
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+p:	p-Value
+rsid:	Variant ID (e.g., rs number)
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001198.tsv.gz into memory 500000 SNPs at a time.
+. done
+Read 464357 SNPs from --sumstats file.
+Removed 8647 SNPs not in --merge-alleles.
+Removed 30 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+455680 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (455680 SNPs remain).
+Using N = 26621.0
+Median value of SIGNED_SUMSTATS was -0.000200020002667, which seems sensible.
+Removed 17 SNPs whose alleles did not match --merge-alleles (455663 SNPs remain).
+Writing summary statistics for 1217311 SNPs (455663 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.111
+Lambda GC = 1.039
+Max chi^2 = 1116.243
+161 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:02:49 2024
+Total time elapsed: 12.52s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '307684', '--signed-sumstats', 'beta,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--frq effect_allele_frequency \
+--chunksize 500000 \
+--N 307684.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+effect_allele_frequency:	Allele frequency
+beta:	Directional summary statistic as specified by --signed-sumstats.
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz into memory 500000 SNPs at a time.
+........... done
+Read 5301239 SNPs from --sumstats file.
+Removed 4271806 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1029433 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1029433 SNPs remain).
+Using N = 307684.0
+Median value of SIGNED_SUMSTATS was 3.26149664693e-05, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1029433 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1029433 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.414
+Lambda GC = 1.144
+Max chi^2 = 374.918
+2325 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:03:24 2024
+Total time elapsed: 34.27s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '307684', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--frq effect_allele_frequency \
+--chunksize 500000 \
+--N 307684.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz into memory 500000 SNPs at a time.
+........... done
+Read 5301239 SNPs from --sumstats file.
+Removed 4271806 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1029433 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1029433 SNPs remain).
+Using N = 307684.0
+Median value of SIGNED_SUMSTATS was 1.0000326155, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1029433 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1029433 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.414
+Lambda GC = 1.144
+Max chi^2 = 374.918
+2325 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:04:02 2024
+Total time elapsed: 37.76s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--frq', 'effect_allele_frequency', '--p', 'p_value', '--N', '307684', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--frq effect_allele_frequency \
+--chunksize 500000 \
+--N 307684.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz \
+--ignore z \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+effect_allele_frequency:	Allele frequency
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90137411.tsv.gz into memory 500000 SNPs at a time.
+........... done
+Read 5301239 SNPs from --sumstats file.
+Removed 4271806 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1029433 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1029433 SNPs remain).
+Using N = 307684.0
+Median value of SIGNED_SUMSTATS was 3.26149664663e-05, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1029433 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1029433 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.414
+Lambda GC = 1.144
+Max chi^2 = 374.918
+2325 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:04:37 2024
+Total time elapsed: 34.13s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz', '--snp', 'SNP', '--a1', 'A1', '--a2', 'A2', '--p', 'P', '--N', '225534', '--N-col', 'N-col', '--N-cas', '38691', '--N-cas-col', 'Nca', '--N-con', '186843', '--N-con-col', 'Nco', '--signed-sumstats', 'OR,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col Nco \
+--signed-sumstats OR,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col Nca \
+--N-col N-col \
+--N-con 186843.0 \
+--chunksize 500000 \
+--N-cas 38691.0 \
+--N 225534.0 \
+--a1 A1 \
+--a2 A2 \
+--snp SNP \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz \
+--ignore z \
+--p P 
+
+Interpreting column names as follows:
+INFO:	INFO score (imputation quality; higher --> better imputation)
+A1:	Allele 1, interpreted as ref allele for signed sumstat.
+P:	p-Value
+A2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+SNP:	Variant ID (e.g., rs number)
+Nco:	Number of controls
+Nca:	Number of cases
+OR:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz into memory 500000 SNPs at a time.
+.............. done
+Read 6774224 SNPs from --sumstats file.
+Removed 5638864 SNPs not in --merge-alleles.
+Removed 7 SNPs with missing values.
+Removed 1034 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1134319 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1134319 SNPs remain).
+Removed 22197 SNPs with N < 150356.0 (1112122 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.9999, which seems sensible.
+Removed 1 SNPs whose alleles did not match --merge-alleles (1112121 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1112121 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.456
+Lambda GC = 1.362
+Max chi^2 = 60.002
+343 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:05:16 2024
+Total time elapsed: 38.02s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz', '--snp', 'SNP', '--a1', 'A1', '--a2', 'A2', '--p', 'P', '--N', '225534', '--N-col', 'N-col', '--N-cas', '38691', '--N-cas-col', 'Nca', '--N-con', '186843', '--N-con-col', 'Nco', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col Nco \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col Nca \
+--N-col N-col \
+--N-con 186843.0 \
+--chunksize 500000 \
+--N-cas 38691.0 \
+--N 225534.0 \
+--a1 A1 \
+--a2 A2 \
+--snp SNP \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz \
+--ignore z \
+--p P 
+
+Interpreting column names as follows:
+INFO:	INFO score (imputation quality; higher --> better imputation)
+A1:	Allele 1, interpreted as ref allele for signed sumstat.
+P:	p-Value
+A2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+SNP:	Variant ID (e.g., rs number)
+Nco:	Number of controls
+Nca:	Number of cases
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/ADHD2022_iPSYCH_deCODE_PGC.meta.gz into memory 500000 SNPs at a time.
+.............. done
+Read 6774224 SNPs from --sumstats file.
+Removed 5638864 SNPs not in --merge-alleles.
+Removed 7 SNPs with missing values.
+Removed 1034 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1134319 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1134319 SNPs remain).
+Removed 22197 SNPs with N < 150356.0 (1112122 SNPs remain).
+Median value of SIGNED_SUMSTATS was -0.000100005000333, which seems sensible.
+Removed 1 SNPs whose alleles did not match --merge-alleles (1112121 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1112121 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.456
+Lambda GC = 1.362
+Max chi^2 = 60.002
+343 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:06:03 2024
+Total time elapsed: 46.4s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz', '--snp', 'SNP', '--a1', 'A1', '--a2', 'A2', '--p', 'P', '--N', '413466', '--N-cas', '41917', '--N-cas-col', 'Nca', '--N-con', '371549', '--N-con-col', 'Nco', '--signed-sumstats', 'OR,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col Nco \
+--signed-sumstats OR,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col Nca \
+--N-con 371549.0 \
+--chunksize 500000 \
+--N-cas 41917.0 \
+--N 413466.0 \
+--a1 A1 \
+--a2 A2 \
+--snp SNP \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz \
+--ignore z \
+--p P 
+
+Interpreting column names as follows:
+INFO:	INFO score (imputation quality; higher --> better imputation)
+A1:	Allele 1, interpreted as ref allele for signed sumstat.
+P:	p-Value
+A2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+SNP:	Variant ID (e.g., rs number)
+Nco:	Number of controls
+Nca:	Number of cases
+OR:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz into memory 500000 SNPs at a time.
+................ done
+Read 7605137 SNPs from --sumstats file.
+Removed 6424909 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 61129 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1119099 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1119099 SNPs remain).
+Removed 2823 SNPs with N < 235932.666667 (1116276 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.9998, which seems sensible.
+Removed 1 SNPs whose alleles did not match --merge-alleles (1116275 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1116275 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.604
+Lambda GC = 1.46
+Max chi^2 = 77.575
+612 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:07:01 2024
+Total time elapsed: 58.12s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz', '--snp', 'SNP', '--a1', 'A1', '--a2', 'A2', '--p', 'P', '--N', '413466', '--N-cas', '41917', '--N-cas-col', 'Nca', '--N-con', '371549', '--N-con-col', 'Nco', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--N-con-col Nco \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-cas-col Nca \
+--N-con 371549.0 \
+--chunksize 500000 \
+--N-cas 41917.0 \
+--N 413466.0 \
+--a1 A1 \
+--a2 A2 \
+--snp SNP \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz \
+--ignore z \
+--p P 
+
+Interpreting column names as follows:
+INFO:	INFO score (imputation quality; higher --> better imputation)
+A1:	Allele 1, interpreted as ref allele for signed sumstat.
+P:	p-Value
+A2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+SNP:	Variant ID (e.g., rs number)
+Nco:	Number of controls
+Nca:	Number of cases
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/PGC-BIP-2021.gz into memory 500000 SNPs at a time.
+................ done
+Read 7605137 SNPs from --sumstats file.
+Removed 6424909 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 61129 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1119099 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1119099 SNPs remain).
+Removed 2823 SNPs with N < 235932.666667 (1116276 SNPs remain).
+Median value of SIGNED_SUMSTATS was -0.000200020002667, which seems sensible.
+Removed 1 SNPs whose alleles did not match --merge-alleles (1116275 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1116275 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.604
+Lambda GC = 1.46
+Max chi^2 = 77.575
+612 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:07:52 2024
+Total time elapsed: 50.27s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz', '--snp', 'snpid', '--a1', 'a1', '--a2', 'a2', '--p', 'pval', '--N', '16731', '--signed-sumstats', 'or,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats or,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--chunksize 500000 \
+--N 16731.0 \
+--a1 a1 \
+--a2 a2 \
+--snp snpid \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz \
+--ignore z \
+--p pval 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+snpid:	Variant ID (e.g., rs number)
+a1:	Allele 1, interpreted as ref allele for signed sumstat.
+pval:	p-Value
+a2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+or:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz into memory 500000 SNPs at a time.
+..... done
+Read 2427220 SNPs from --sumstats file.
+Removed 1362109 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 260657 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 2 variants that were not SNPs or were strand-ambiguous.
+804452 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (804452 SNPs remain).
+Using N = 16731.0
+Median value of SIGNED_SUMSTATS was 1.0, which seems sensible.
+Removed 15 SNPs whose alleles did not match --merge-alleles (804437 SNPs remain).
+Writing summary statistics for 1217311 SNPs (804437 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.185
+Lambda GC = 1.161
+Max chi^2 = 38.476
+23 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:08:14 2024
+Total time elapsed: 21.66s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz', '--snp', 'snpid', '--a1', 'a1', '--a2', 'a2', '--p', 'pval', '--N', '16731', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--chunksize 500000 \
+--N 16731.0 \
+--a1 a1 \
+--a2 a2 \
+--snp snpid \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz \
+--ignore z \
+--p pval 
+
+Interpreting column names as follows:
+info:	INFO score (imputation quality; higher --> better imputation)
+snpid:	Variant ID (e.g., rs number)
+a1:	Allele 1, interpreted as ref allele for signed sumstat.
+pval:	p-Value
+a2:	Allele 2, interpreted as non-ref allele for signed sumstat.
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST001241.gz into memory 500000 SNPs at a time.
+..... done
+Read 2427220 SNPs from --sumstats file.
+Removed 1362109 SNPs not in --merge-alleles.
+Removed 0 SNPs with missing values.
+Removed 260657 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 2 variants that were not SNPs or were strand-ambiguous.
+804452 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (804452 SNPs remain).
+Using N = 16731.0
+Median value of SIGNED_SUMSTATS was 0.0, which seems sensible.
+Removed 15 SNPs whose alleles did not match --merge-alleles (804437 SNPs remain).
+Writing summary statistics for 1217311 SNPs (804437 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.185
+Lambda GC = 1.161
+Max chi^2 = 38.476
+23 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:08:38 2024
+Total time elapsed: 22.69s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p_value', '--N', '428231', '--N-col', 'totN', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z', '--ignore', 'n']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-col totN \
+--chunksize 500000 \
+--N 428231.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz \
+--ignore n \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+totN:	Sample size
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz into memory 500000 SNPs at a time.
+.................... done
+Read 9969821 SNPs from --sumstats file.
+Removed 6663337 SNPs not in --merge-alleles.
+Removed 2224099 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1082385 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1082385 SNPs remain).
+Removed 0 SNPs with N < 158358.0 (1082385 SNPs remain).
+Median value of SIGNED_SUMSTATS was 1.0, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1082385 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1082385 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.192
+Lambda GC = 1.12
+Max chi^2 = 466.358
+663 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:09:24 2024
+Total time elapsed: 45.97s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p_value', '--N', '428231', '--N-col', 'totN', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z', '--ignore', 'n']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-col totN \
+--chunksize 500000 \
+--N 428231.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz \
+--ignore n \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+totN:	Sample size
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011804.tsv.gz into memory 500000 SNPs at a time.
+.................... done
+Read 9969821 SNPs from --sumstats file.
+Removed 6446413 SNPs not in --merge-alleles.
+Removed 2441023 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1082385 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1082385 SNPs remain).
+Removed 0 SNPs with N < 158358.0 (1082385 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.0, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1082385 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1082385 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.192
+Lambda GC = 1.12
+Max chi^2 = 466.358
+663 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:10:11 2024
+Total time elapsed: 45.96s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p_value', '--N', '416913', '--N-col', 'totN', '--signed-sumstats', 'odds_ratio,1', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z', '--ignore', 'n']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats odds_ratio,1 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-col totN \
+--chunksize 500000 \
+--N 416913.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz \
+--ignore n \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+totN:	Sample size
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+odds_ratio:	Directional summary statistic as specified by --signed-sumstats.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz into memory 500000 SNPs at a time.
+.................... done
+Read 9984823 SNPs from --sumstats file.
+Removed 6749087 SNPs not in --merge-alleles.
+Removed 2139548 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1096188 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1096188 SNPs remain).
+Removed 0 SNPs with N < 150812.666667 (1096188 SNPs remain).
+Median value of SIGNED_SUMSTATS was 0.9998, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1096188 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1096188 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.06
+Lambda GC = 1.051
+Max chi^2 = 100.121
+41 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:10:57 2024
+Total time elapsed: 45.41s
+['singularity', 'exec', '/home/maria/singularity/munge_stats/ldsc', 'python2', '/home/maria/git/SOROLLA/scripts/ldsc/munge_sumstats.py', '--sumstats', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz', '--snp', 'variant_id', '--a1', 'effect_allele', '--a2', 'other_allele', '--p', 'p_value', '--N', '416913', '--N-col', 'totN', '--signed-sumstats', 'beta_added,0', '--out', '/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_imputed_beta', '--chunksize', '500000', '--merge-alleles', '/home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist', '--ignore', 'z', '--ignore', 'n']
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./munge_sumstats.py \
+--signed-sumstats beta_added,0 \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_imputed_beta \
+--merge-alleles /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist \
+--N-col totN \
+--chunksize 500000 \
+--N 416913.0 \
+--a1 effect_allele \
+--a2 other_allele \
+--snp variant_id \
+--sumstats /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz \
+--ignore n \
+--p p_value 
+
+Interpreting column names as follows:
+p_value:	p-Value
+totN:	Sample size
+other_allele:	Allele 2, interpreted as non-ref allele for signed sumstat.
+variant_id:	Variant ID (e.g., rs number)
+effect_allele:	Allele 1, interpreted as ref allele for signed sumstat.
+beta_added:	Directional summary statistic as specified by --signed-sumstats.
+
+Reading list of SNPs for allele merge from /home/maria/git/SOROLLA/Ref_Genomes/HapMap3/w_hm3.snplist
+Read 1217311 SNPs for allele merge.
+Reading sumstats from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/RAW/GCST90011816.tsv.gz into memory 500000 SNPs at a time.
+.................... done
+Read 9984823 SNPs from --sumstats file.
+Removed 6529315 SNPs not in --merge-alleles.
+Removed 2359320 SNPs with missing values.
+Removed 0 SNPs with INFO <= 0.9.
+Removed 0 SNPs with MAF <= 0.01.
+Removed 0 SNPs with out-of-bounds p-values.
+Removed 0 variants that were not SNPs or were strand-ambiguous.
+1096188 SNPs remain.
+Removed 0 SNPs with duplicated rs numbers (1096188 SNPs remain).
+Removed 0 SNPs with N < 150812.666667 (1096188 SNPs remain).
+Median value of SIGNED_SUMSTATS was -0.000200020002667, which seems sensible.
+Removed 0 SNPs whose alleles did not match --merge-alleles (1096188 SNPs remain).
+Writing summary statistics for 1217311 SNPs (1096188 with nonmissing beta) to /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_imputed_beta.sumstats.gz.
+
+Metadata:
+Mean chi^2 = 1.06
+Lambda GC = 1.051
+Max chi^2 = 100.121
+41 Genome-wide significant SNPs (some may have been removed by filtering).
+
+Conversion finished at Mon Nov  4 18:11:48 2024
+Total time elapsed: 51.1s

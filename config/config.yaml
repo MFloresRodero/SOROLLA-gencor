@@ -9,56 +9,71 @@ SumStats:
   raw_catalog: excell_sumstats_description.csv
   description_csv: final_sumstats_description.csv
   paired_data: paired_datasets.csv
+  MR_data: MR_paired_datasets.csv
+  gnova_paired: gnova_paired_datasets.csv
+  supergnova_paired: supergnova_paired_datasets.csv
 
 Scripts:
   pipeline:
-    catalog_to_final_description: scripts/pipeline/1_from_excell_catalog_to_final_csv.py
-    add_ncol: scripts/pipeline/2_add_Ncol.py
-    automatised_munge_script: scripts/pipeline/3_munge_sumstats_from_csv.py
-    automatised_wrangle_script: scripts/pipeline/3_wrangle_sumstats_from_csv.py
-    create_pairs: scripts/pipeline/4_create_pairs_diseases.py
-    ldsc_genetic_correlation: scripts/pipeline/5A_ldsc_run_pairs_automatised.py
-    hdl_genetic_correlation: scripts/pipeline/5B_hdl_run_pairs_automatised.R
+    catalog_to_final_description: scripts/pipeline/01_from_excell_catalog_to_final_csv.py
+    add_ncol: scripts/pipeline/02_add_Ncol.py
+    automatised_munge_script: sscripts/pipeline/03_MUNGE_sumstats_from_csv.py
+    automatised_wrangle_script: scripts/pipeline/03_WRANGLE_create_individual_commands.py
+    run_individual_wrangle_commands: scripts/pipeline/03_WRANGLE_run_wrangle_commands.sh
+    create_pairs: scripts/pipeline/04_LDSC_create_pairs_diseases.py
+    ldsc_genetic_correlation: scripts/pipeline/05_LDSC_run_pairs_automatised.py
+    hdl_genetic_correlation: scripts/pipeline/05_HDL_run_pairs_automatised.py
+    supergnova_genetic_correlation: scripts/pipeline/05_SUPERGNOVA_run_pairs_automatised.py
     ldsc_SNP: scripts/pipeline/6A_ldsc_extract_SNPs.py
-    ldsc_results_to_csv: scripts/pipeline/6A_ldsc_read_results_extract_gencor.py
-    hdl_results_to_csv: scripts/pipeline/6B_HDL_read_results_extract_gencor.py
+    ldsc_results_to_csv: scripts/pipeline/06_LDSC_extract_SNPs.py
+    hdl_results_to_csv: scripts/pipeline/06_HDL_read_results_extract_gencor.py
   ldsc:
     ldsc_software: scripts/ldsc/ldsc.py
     ldsc_munge: scripts/ldsc/munge_sumstats.py
-  gnova:
-    gnova_software: scripts/gnova/gnova.py
-    gnova_munge: scripts/gnova/munge_sumstats.py
+  GNOVA:
+    gnova_software: scripts/GNOVA/gnova.py
+    gnova_munge: scripts/GNOVA/munge_sumstats.py
+  SUPERGNOVA:
+    supergnova_software: scripts/SUPERGNOVA/supergnova.py
   HDL:
     HDL_software: scripts/HDL/HDL.run.R
     HDL_wrangler: scripts/HDL/HDL.data.wrangling.R
 
 Results:
-  results_folder: Results/
+  results_folder: /Results/
   ldsc_results_csv: ldsc_genetic_correlation.csv
   folder_ldsc: ldsc/
   gnova_results_csv: gnova_genetic_correlation.csv
   folder_gnova: Gnova/
+  supergnova_results_csv: supergnova_genetic_correlation.csv
+  folder_supergnova: Supergnova/
   hdl_results_csv: hdl_genetic_correlation.csv
   folder_hdl: HDL/
   plots:
     ldsc_heatmap: plots/ldsc_heatmap.png
     hdl_heatmap: plots/hdl_heatmap.png
+  MR_folder: MR/
 
 reference_genomes:
   reference_genomes_folder: /Ref_Genomes/
   eur_w_ld_chr: 1000G_Phase3_LD_scores/LDscore/LDscore.@
   HapMap3: HapMap3/w_hm3.snplist
+  UKB_imputed: UKB_imputed_SVD_eigen99_extraction
+  plink_folder: 1000G_Phase3_LD_scores/
+  plink_gnova: 1000G_EUR_Phase3_plink/1000G.EUR.QC.@
+  supergnova_bfile: 1000G_EUR_Phase3_plink/1000G.EUR.QC.@
+  supergnova_partition: 1000G_EUR_Phase3_plink/data/partition/eur_chr@.bed
 
 # Local configuration
 local: 
   base_path: /home/maria/git/SOROLLA
   environments_folder: /home/maria/singularity/munge_stats
   singularity_ldsc: ldsc.sif
-  HDL_environment: hdl.sif
+  HDL_environment: HDL_with_R.sif
 
 # Remote configuration
 remote:
   base_path: /gpfs/projects/bsc02/mflores/gencor
   environments_folder: /gpfs/projects/bsc02/mflores/singularity
   singularity_ldsc: ldsc.sif
-  HDL_environment: hdl.sif
+  HDL_environment: HDL_with_R.sif

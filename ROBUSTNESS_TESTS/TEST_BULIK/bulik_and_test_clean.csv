@@ -1,0 +1,38 @@
+p1,p2,rg_bulik,rg_mytest,p_bulik,p_mytest
+Bipolar,Triglycerides,-0.053,0.0256,0.4111,0.6847
+Autism Spectrum,Depression,0.215,0.7399,0.1352,5.9313000000000004e-33
+Autism Spectrum,Schizophrenia,0.14,0.9532,0.1016,3.1069000000000003e-190
+Bipolar,College,0.261,0.262,9.692e-05,0.0004
+Bipolar,Childhood Obesity,0.06,0.0086,0.3775,0.9044
+Alzheimer's,BMI,0.031,-0.0166,0.612,0.7457
+Depression,Triglycerides,0.1852,0.1834,0.02965,0.0237
+Bipolar,Schizophrenia,0.794,0.7839,7.447e-94,7.195199999999999e-72
+Autism Spectrum,LDL,-0.046,-0.0336,0.5338,0.5172
+Depression,Schizophrenia,0.5083,0.5364,1.319e-11,1.1206e-11
+Bipolar,LDL,-0.016,-0.0021,0.7812,0.9721
+Autism Spectrum,College,0.303,0.1871,0.0001527,0.0028
+Alzheimer's,College,-0.349,-0.2888,0.001,0.0003
+Bipolar,Coronary Artery Disease,-0.114,-0.1098,0.1185,0.1111
+Bipolar,College,0.261,0.272,9.692e-05,5.539e-05
+Depression,HDL,-0.004728,-0.0087,0.959,0.9334
+Autism Spectrum,Rheumatoid Arthritis,-0.15,-0.0459,0.1256,0.4503
+Bipolar,Depression,0.478,0.522,6.572e-06,7.587e-06
+Alzheimer's,Rheumatoid Arthritis,-0.052,-0.0089,0.672,0.9258
+Bipolar,Rheumatoid Arthritis,-0.102,-0.0858,0.2315,0.252
+Alzheimer's,Childhood Obesity,-0.165,-0.0469,0.156,0.6117
+Alzheimer's,Triglycerides,-0.044,-0.068,0.571,0.2962
+Bipolar,HDL,0.041,0.0041,0.4747,0.9433
+Alzheimer's,LDL,-0.11,0.0723,0.504,0.4096
+Depression,LDL,-0.1174,-0.112,0.2176,0.2303
+Schizophrenia,Triglycerides,-0.038,-0.021,0.2934,0.5528
+Autism Spectrum,Bipolar,0.044,0.8145,0.6604,4.4549e-106
+Autism Spectrum,Triglycerides,0.073,0.0149,0.4012,0.7417
+Depression,Rheumatoid Arthritis,-0.1283,-0.0258,0.2549,0.7634
+Alzheimer's,Coronary Artery Disease,0.028,0.0354,0.804,0.7101
+Autism Spectrum,Childhood Obesity,-0.027,-0.0462,0.7866,0.4701
+Autism Spectrum,College,0.303,0.148,0.0001527,0.0169
+Alzheimer's,HDL,0.142,0.1939,0.154,0.0308
+Autism Spectrum,HDL,0.008,0.0556,0.9064,0.3658
+Autism Spectrum,Coronary Artery Disease,-0.02,-0.0663,0.8285,0.3706
+Autism Spectrum,BMI,0.019,-0.0624,0.6842,0.0673
+Alzheimer's,College,-0.349,-0.3105,0.001,8.815e-05

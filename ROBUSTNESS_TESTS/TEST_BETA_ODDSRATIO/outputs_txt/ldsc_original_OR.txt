@@ -1,0 +1,1929 @@
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.@ \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/ldsc/original_OR/lung-cancer-squamous_GCST004750_mdd-1_GCST009979 \
+--rg /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz,/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR.sumstats.gz \
+--w-ld-chr /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.@ 
+
+Beginning analysis at Mon Nov  4 18:35:17 2024
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz ...
+Read summary statistics for 1118439 SNPs.
+Reading reference panel LD Score from /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.[1-22] ... (ldscore_fromlist)
+Read reference panel LD Scores for 1190321 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.[1-22] ... (ldscore_fromlist)
+Read regression weight LD Scores for 1190321 SNPs.
+After merging with reference panel LD, 1108525 SNPs remain.
+After merging with regression SNP LD, 1108525 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1101437 SNPs with valid alleles.
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0541 (0.0146)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1126
+Intercept: 1.041 (0.0093)
+Ratio: 0.3638 (0.0823)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0792 (0.0059)
+Lambda GC: 1.1491
+Mean Chi^2: 1.1655
+Intercept: 1.0169 (0.0076)
+Ratio: 0.1022 (0.0457)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.009 (0.0062)
+Mean z1*z2: 0.0214
+Intercept: 0.0094 (0.0058)
+
+Genetic Correlation
+-------------------
+...
+/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz  /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009979_mdd-1_original_OR.sumstats.gz  0.1374  0.106  1.2956  0.1951  0.0792     0.0059  1.0169     0.0076    0.0094       0.0058
+
+Analysis finished at Mon Nov  4 18:35:27 2024
+Total time elapsed: 10.6s
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/tmp/ipykernel_197404/2977975089.py:43: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value 'True' has dtype incompatible with bool, please explicitly cast to a compatible dtype first.
+  data.at[index, "ldsc"] = ldsc_result  # Update LDSC column dynamically
+*********************************************************************
+* LD Score Regression (LDSC)
+* Version 1.0.1
+* (C) 2014-2019 Brendan Bulik-Sullivan and Hilary Finucane
+* Broad Institute of MIT and Harvard / MIT Department of Mathematics
+* GNU General Public License v3
+*********************************************************************
+Call: 
+./ldsc.py \
+--ref-ld-chr /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.@ \
+--out /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/ldsc/original_OR/lung-cancer-squamous_GCST004750_mdd-trauma_GCST009980 \
+--rg /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz,/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR.sumstats.gz \
+--w-ld-chr /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.@ 
+
+Beginning analysis at Mon Nov  4 18:35:28 2024
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST004750_lung-cancer-squamous_original_OR.sumstats.gz ...
+Read summary statistics for 1118439 SNPs.
+Reading reference panel LD Score from /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.[1-22] ... (ldscore_fromlist)
+Read reference panel LD Scores for 1190321 SNPs.
+Removing partitioned LD Scores with zero variance.
+Reading regression weight LD Score from /home/maria/git/SOROLLA/Ref_Genomes/1000G_Phase3_LD_scores/LDscore/LDscore.[1-22] ... (ldscore_fromlist)
+Read regression weight LD Scores for 1190321 SNPs.
+After merging with reference panel LD, 1108525 SNPs remain.
+After merging with regression SNP LD, 1108525 SNPs remain.
+Computing rg for phenotype 2/2
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1101455 SNPs with valid alleles.
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0542 (0.0146)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1126
+Intercept: 1.0408 (0.0093)
+Ratio: 0.3621 (0.0829)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1123 (0.0174)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0555
+Intercept: 1.0001 (0.0069)
+Ratio: 0.0021 (0.1243)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0073 (0.0092)
+Mean z1*z2: 0.0155
+Intercept: 0.01 (0.0051)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1101370 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0541 (0.0146)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1127
+Intercept: 1.041 (0.0093)
+Ratio: 0.3642 (0.0822)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0329 (0.0093)
+Lambda GC: 1.0466
+Mean Chi^2: 1.0474
+Intercept: 1.0141 (0.0066)
+Ratio: 0.2973 (0.1398)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0023 (0.0067)
+Mean z1*z2: 0.0051
+Intercept: 0.0028 (0.0054)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+426016 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0434 (0.0137)
+Lambda GC: 1.0772
+Mean Chi^2: 1.1003
+Intercept: 1.0508 (0.01)
+Ratio: 0.506 (0.0997)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1537 (0.0711)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1087
+Intercept: 1.0289 (0.0158)
+Ratio: 0.2654 (0.1451)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0112 (0.009)
+Mean z1*z2: 0.0362
+Intercept: 0.0282 (0.0057)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+969091 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0562 (0.0158)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1153
+Intercept: 1.04 (0.0097)
+Ratio: 0.3471 (0.0844)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0699 (0.011)
+Lambda GC: 1.1459
+Mean Chi^2: 1.4131
+Intercept: 0.9751 (0.0212)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.009 (0.0037)
+Mean z1*z2: 0.0268
+Intercept: 0.0009 (0.0062)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1043115 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0523 (0.0136)
+Lambda GC: 1.0864
+Mean Chi^2: 1.1164
+Intercept: 1.0445 (0.0095)
+Ratio: 0.3823 (0.0814)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0839 (0.0048)
+Lambda GC: 1.3615
+Mean Chi^2: 1.4556
+Intercept: 1.081 (0.0111)
+Ratio: 0.1777 (0.0244)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0259 (0.0042)
+Mean z1*z2: 0.0789
+Intercept: 0.0137 (0.0061)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1047013 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0525 (0.016)
+Lambda GC: 1.0864
+Mean Chi^2: 1.1164
+Intercept: 1.0442 (0.0106)
+Ratio: 0.3798 (0.0909)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0701 (0.0036)
+Lambda GC: 1.4602
+Mean Chi^2: 1.6013
+Intercept: 1.1006 (0.0134)
+Ratio: 0.1672 (0.0222)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0048 (0.004)
+Mean z1*z2: 0.0447
+Intercept: 0.0348 (0.0073)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+753198 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0573 (0.0167)
+Lambda GC: 1.0895
+Mean Chi^2: 1.1224
+Intercept: 1.0365 (0.0127)
+Ratio: 0.2981 (0.1036)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3715 (0.044)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1867
+Intercept: 1.0441 (0.0113)
+Ratio: 0.2363 (0.0606)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0188 (0.0138)
+Mean z1*z2: 0.024
+Intercept: 0.04 (0.0073)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1011865 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0551 (0.0144)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1114
+Intercept: 1.0361 (0.0095)
+Ratio: 0.3238 (0.085)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0268 (0.0043)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1924
+Intercept: 1.06 (0.0153)
+Ratio: 0.3117 (0.0796)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.005 (0.0031)
+Mean z1*z2: 0.0081
+Intercept: -0.005 (0.006)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1108525 SNPs remain.
+1024892 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0555 (0.0151)
+Lambda GC: 1.0833
+Mean Chi^2: 1.1119
+Intercept: 1.0359 (0.0095)
+Ratio: 0.3208 (0.0846)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0094 (0.0024)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0589
+Intercept: 1.0131 (0.0081)
+Ratio: 0.2216 (0.1372)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0043 (0.0031)
+Mean z1*z2: 0.0117
+Intercept: 0.0026 (0.0051)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009980_mdd-trauma_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1166711 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0787 (0.006)
+Lambda GC: 1.1491
+Mean Chi^2: 1.1644
+Intercept: 1.0169 (0.0075)
+Ratio: 0.1031 (0.0458)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1094 (0.0165)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0539
+Intercept: 0.9999 (0.0066)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0797 (0.0079)
+Mean z1*z2: 0.6269
+Intercept: 0.5506 (0.0056)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1166988 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0789 (0.006)
+Lambda GC: 1.1491
+Mean Chi^2: 1.1644
+Intercept: 1.0167 (0.0075)
+Ratio: 0.1018 (0.0457)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0321 (0.0092)
+Lambda GC: 1.0466
+Mean Chi^2: 1.047
+Intercept: 1.0146 (0.0066)
+Ratio: 0.3103 (0.1404)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0513 (0.0061)
+Mean z1*z2: 0.6988
+Intercept: 0.6284 (0.0057)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+448892 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0838 (0.0069)
+Lambda GC: 1.1428
+Mean Chi^2: 1.1513
+Intercept: 1.0142 (0.0085)
+Ratio: 0.0935 (0.0561)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1474 (0.0711)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1093
+Intercept: 1.0325 (0.0158)
+Ratio: 0.2977 (0.1443)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0099 (0.0086)
+Mean z1*z2: 0.0068
+Intercept: -0.0012 (0.0063)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1024918 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0786 (0.0062)
+Lambda GC: 1.1523
+Mean Chi^2: 1.1664
+Intercept: 1.0179 (0.0081)
+Ratio: 0.1073 (0.0485)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0697 (0.0121)
+Lambda GC: 1.1428
+Mean Chi^2: 1.4139
+Intercept: 0.9757 (0.0236)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0029 (0.0027)
+Mean z1*z2: -0.0177
+Intercept: -0.0067 (0.0053)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1099707 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0781 (0.0061)
+Lambda GC: 1.1555
+Mean Chi^2: 1.1706
+Intercept: 1.0184 (0.0082)
+Ratio: 0.1081 (0.048)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0842 (0.0045)
+Lambda GC: 1.3615
+Mean Chi^2: 1.4569
+Intercept: 1.0794 (0.011)
+Ratio: 0.1738 (0.0241)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0368 (0.0036)
+Mean z1*z2: 0.1279
+Intercept: 0.0207 (0.0067)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1103852 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0768 (0.0062)
+Lambda GC: 1.1555
+Mean Chi^2: 1.1709
+Intercept: 1.021 (0.0085)
+Ratio: 0.1229 (0.0498)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0707 (0.0036)
+Lambda GC: 1.4602
+Mean Chi^2: 1.6049
+Intercept: 1.0988 (0.0134)
+Ratio: 0.1634 (0.0221)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0318 (0.0032)
+Mean z1*z2: 0.1421
+Intercept: 0.0221 (0.0071)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+793936 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0755 (0.0068)
+Lambda GC: 1.1683
+Mean Chi^2: 1.1886
+Intercept: 1.0263 (0.0099)
+Ratio: 0.1395 (0.0523)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3614 (0.0428)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1852
+Intercept: 1.0463 (0.0114)
+Ratio: 0.2501 (0.0615)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0515 (0.0124)
+Mean z1*z2: 0.0609
+Intercept: 0.0131 (0.0074)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1068675 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0772 (0.0064)
+Lambda GC: 1.1555
+Mean Chi^2: 1.1698
+Intercept: 1.0195 (0.0082)
+Ratio: 0.1151 (0.0482)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0275 (0.0042)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1925
+Intercept: 1.0574 (0.0149)
+Ratio: 0.2981 (0.0774)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0002 (0.0027)
+Mean z1*z2: 0.0042
+Intercept: 0.0048 (0.0056)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167221 SNPs remain.
+1082337 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0775 (0.0057)
+Lambda GC: 1.1555
+Mean Chi^2: 1.1699
+Intercept: 1.0191 (0.008)
+Ratio: 0.1127 (0.0473)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0089 (0.0024)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0598
+Intercept: 1.0162 (0.0079)
+Ratio: 0.2712 (0.1327)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.007 (0.0027)
+Mean z1*z2: 0.0177
+Intercept: -0.0048 (0.0057)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST009981_mdd-notrauma_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1166548 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1095 (0.0165)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0539
+Intercept: 0.9999 (0.0066)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0321 (0.0092)
+Lambda GC: 1.0466
+Mean Chi^2: 1.047
+Intercept: 1.0146 (0.0066)
+Ratio: 0.311 (0.1399)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0521 (0.009)
+Mean z1*z2: 0.0412
+Intercept: 0.0045 (0.0047)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+448896 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1058 (0.02)
+Lambda GC: 1.0436
+Mean Chi^2: 1.0462
+Intercept: 1.0002 (0.0076)
+Ratio: 0.0033 (0.1657)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1475 (0.0711)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1093
+Intercept: 1.0325 (0.0158)
+Ratio: 0.2973 (0.1444)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0086 (0.0169)
+Mean z1*z2: -0.0024
+Intercept: -0.0052 (0.0058)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1024865 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0998 (0.0174)
+Lambda GC: 1.0557
+Mean Chi^2: 1.054
+Intercept: 1.0042 (0.0074)
+Ratio: 0.077 (0.1365)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0697 (0.0121)
+Lambda GC: 1.1428
+Mean Chi^2: 1.4139
+Intercept: 0.9759 (0.0235)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0011 (0.0047)
+Mean z1*z2: -0.0077
+Intercept: -0.0059 (0.0049)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1099716 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0918 (0.018)
+Lambda GC: 1.0557
+Mean Chi^2: 1.0572
+Intercept: 1.0097 (0.0078)
+Ratio: 0.1695 (0.1357)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.084 (0.0045)
+Lambda GC: 1.3615
+Mean Chi^2: 1.4569
+Intercept: 1.0801 (0.0109)
+Ratio: 0.1752 (0.0239)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0362 (0.0061)
+Mean z1*z2: 0.0696
+Intercept: 0.015 (0.006)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1103847 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.099 (0.0178)
+Lambda GC: 1.0557
+Mean Chi^2: 1.0566
+Intercept: 1.0057 (0.0075)
+Ratio: 0.0998 (0.1326)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0707 (0.0036)
+Lambda GC: 1.4602
+Mean Chi^2: 1.6049
+Intercept: 1.0987 (0.0133)
+Ratio: 0.1632 (0.0221)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0256 (0.0054)
+Mean z1*z2: 0.0585
+Intercept: 0.0087 (0.0064)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+793928 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0931 (0.019)
+Lambda GC: 1.0588
+Mean Chi^2: 1.062
+Intercept: 1.0089 (0.0087)
+Ratio: 0.1441 (0.1396)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3618 (0.0427)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1852
+Intercept: 1.0462 (0.0114)
+Ratio: 0.2493 (0.0615)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.053 (0.0213)
+Mean z1*z2: 0.0283
+Intercept: 0.0029 (0.007)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1068441 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1032 (0.0172)
+Lambda GC: 1.0557
+Mean Chi^2: 1.0553
+Intercept: 1.0024 (0.007)
+Ratio: 0.0436 (0.126)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0276 (0.0043)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1925
+Intercept: 1.0573 (0.0149)
+Ratio: 0.2979 (0.0775)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0053 (0.0048)
+Mean z1*z2: 0.0062
+Intercept: -0.0013 (0.0057)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167326 SNPs remain.
+1082096 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1025 (0.0178)
+Lambda GC: 1.0557
+Mean Chi^2: 1.0551
+Intercept: 1.0025 (0.007)
+Ratio: 0.0453 (0.1266)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0089 (0.0024)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0598
+Intercept: 1.0159 (0.008)
+Ratio: 0.2655 (0.1337)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0064 (0.0044)
+Mean z1*z2: 0.0088
+Intercept: -0.0016 (0.0052)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001198_multiple-sclerosis-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+448888 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0366 (0.011)
+Lambda GC: 1.0405
+Mean Chi^2: 1.0412
+Intercept: 1.009 (0.0083)
+Ratio: 0.2183 (0.2022)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.1474 (0.0711)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1093
+Intercept: 1.0325 (0.0158)
+Ratio: 0.2975 (0.1442)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0024 (0.0102)
+Mean z1*z2: 0.0027
+Intercept: 0.0017 (0.0056)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+1024907 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0308 (0.009)
+Lambda GC: 1.0466
+Mean Chi^2: 1.0479
+Intercept: 1.0165 (0.0065)
+Ratio: 0.3445 (0.1355)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0697 (0.0121)
+Lambda GC: 1.1428
+Mean Chi^2: 1.4139
+Intercept: 0.9758 (0.0236)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0023 (0.0035)
+Mean z1*z2: -0.0078
+Intercept: -0.0112 (0.0056)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+1099673 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0348 (0.0093)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0489
+Intercept: 1.0126 (0.007)
+Ratio: 0.2567 (0.1425)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0842 (0.0045)
+Lambda GC: 1.3615
+Mean Chi^2: 1.4569
+Intercept: 1.0793 (0.011)
+Ratio: 0.1736 (0.0241)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0205 (0.0045)
+Mean z1*z2: 0.0477
+Intercept: 0.0049 (0.0065)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+1103819 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0324 (0.0093)
+Lambda GC: 1.0466
+Mean Chi^2: 1.049
+Intercept: 1.015 (0.0071)
+Ratio: 0.3069 (0.1451)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0707 (0.0036)
+Lambda GC: 1.4602
+Mean Chi^2: 1.605
+Intercept: 1.0989 (0.0134)
+Ratio: 0.1635 (0.0221)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.024 (0.0037)
+Mean z1*z2: 0.0778
+Intercept: 0.0146 (0.007)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+793928 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0315 (0.01)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0539
+Intercept: 1.0176 (0.0085)
+Ratio: 0.3264 (0.158)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3617 (0.0428)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1852
+Intercept: 1.0462 (0.0114)
+Ratio: 0.2495 (0.0615)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0422 (0.014)
+Mean z1*z2: 0.037
+Intercept: 0.0096 (0.0071)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+1068618 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0288 (0.0094)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0496
+Intercept: 1.0193 (0.0068)
+Ratio: 0.3891 (0.137)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0275 (0.0042)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1925
+Intercept: 1.0575 (0.0149)
+Ratio: 0.2985 (0.0774)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0032 (0.0033)
+Mean z1*z2: 0.0012
+Intercept: 0.0089 (0.0052)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1167123 SNPs remain.
+1082281 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0294 (0.0092)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0497
+Intercept: 1.0188 (0.0071)
+Ratio: 0.378 (0.1427)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0089 (0.0024)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0599
+Intercept: 1.0162 (0.008)
+Ratio: 0.2714 (0.1331)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.005 (0.0036)
+Mean z1*z2: 0.0053
+Intercept: -0.0066 (0.0058)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90137411_bcc-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+395937 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1604 (0.0778)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1132
+Intercept: 1.0289 (0.018)
+Ratio: 0.2548 (0.1594)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0643 (0.0119)
+Lambda GC: 1.1238
+Mean Chi^2: 1.3456
+Intercept: 0.9895 (0.0211)
+Ratio < 0 (usually indicates GC correction).
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0119 (0.0067)
+Mean z1*z2: -0.0215
+Intercept: -0.006 (0.0068)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+423361 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1508 (0.0776)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1111
+Intercept: 1.0295 (0.0189)
+Ratio: 0.2655 (0.1702)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0866 (0.0047)
+Lambda GC: 1.3477
+Mean Chi^2: 1.4275
+Intercept: 1.0823 (0.0125)
+Ratio: 0.1926 (0.0293)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0037 (0.0059)
+Mean z1*z2: 0.0217
+Intercept: 0.0257 (0.007)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+425808 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1546 (0.0668)
+Lambda GC: 1.0375
+Mean Chi^2: 1.111
+Intercept: 1.0277 (0.0167)
+Ratio: 0.25 (0.1508)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0684 (0.0036)
+Lambda GC: 1.4316
+Mean Chi^2: 1.5478
+Intercept: 1.1129 (0.0142)
+Ratio: 0.206 (0.0258)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0093 (0.0054)
+Mean z1*z2: 0.0693
+Intercept: 0.0531 (0.0072)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+318797 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1449 (0.0687)
+Lambda GC: 1.0315
+Mean Chi^2: 1.1071
+Intercept: 1.0198 (0.0196)
+Ratio: 0.1852 (0.1832)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3534 (0.0434)
+Lambda GC: 1.1428
+Mean Chi^2: 1.1696
+Intercept: 1.0472 (0.0117)
+Ratio: 0.2782 (0.0692)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0026 (0.0207)
+Mean z1*z2: 0.0704
+Intercept: 0.0694 (0.0076)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+406114 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1437 (0.0744)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1085
+Intercept: 1.0298 (0.0174)
+Ratio: 0.2745 (0.1607)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0241 (0.0045)
+Lambda GC: 1.1082
+Mean Chi^2: 1.177
+Intercept: 1.0705 (0.018)
+Ratio: 0.3982 (0.1017)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 4.238e-05 (0.0057)
+Mean z1*z2: 0.0112
+Intercept: 0.0104 (0.0068)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 451003 SNPs remain.
+411404 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.1451 (0.0755)
+Lambda GC: 1.0375
+Mean Chi^2: 1.1084
+Intercept: 1.0291 (0.0179)
+Ratio: 0.2686 (0.1654)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0096 (0.0026)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0575
+Intercept: 1.0165 (0.0097)
+Ratio: 0.2865 (0.169)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0064 (0.0056)
+Mean z1*z2: 0.0016
+Intercept: -0.0086 (0.0066)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-ADHD-2022_ADHD-PGC-2022_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1024951 SNPs remain.
+977887 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0682 (0.0142)
+Lambda GC: 1.1459
+Mean Chi^2: 1.4248
+Intercept: 0.9801 (0.0285)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0825 (0.0047)
+Lambda GC: 1.365
+Mean Chi^2: 1.455
+Intercept: 1.0849 (0.011)
+Ratio: 0.1866 (0.0242)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0003 (0.0022)
+Mean z1*z2: -0.0068
+Intercept: -0.0068 (0.0069)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1024951 SNPs remain.
+980370 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0682 (0.0139)
+Lambda GC: 1.1491
+Mean Chi^2: 1.4256
+Intercept: 0.9812 (0.0284)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0691 (0.0036)
+Lambda GC: 1.4602
+Mean Chi^2: 1.6038
+Intercept: 1.1052 (0.0133)
+Ratio: 0.1742 (0.022)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0011 (0.0022)
+Mean z1*z2: -0.0029
+Intercept: 0.0074 (0.0075)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1024951 SNPs remain.
+707887 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0674 (0.0145)
+Lambda GC: 1.1619
+Mean Chi^2: 1.4596
+Intercept: 0.9796 (0.0346)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3647 (0.0431)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1859
+Intercept: 1.0459 (0.0114)
+Ratio: 0.2467 (0.0612)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0007 (0.0095)
+Mean z1*z2: 0.009
+Intercept: 0.0124 (0.0086)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1024951 SNPs remain.
+949313 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0698 (0.0139)
+Lambda GC: 1.1428
+Mean Chi^2: 1.417
+Intercept: 0.9638 (0.0258)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.026 (0.0043)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1902
+Intercept: 1.0609 (0.0139)
+Ratio: 0.3202 (0.0732)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0082 (0.0025)
+Mean z1*z2: 0.1308
+Intercept: 0.0837 (0.0065)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1024951 SNPs remain.
+961494 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0694 (0.014)
+Lambda GC: 1.1459
+Mean Chi^2: 1.4163
+Intercept: 0.9654 (0.0268)
+Ratio < 0 (usually indicates GC correction).
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0094 (0.0025)
+Lambda GC: 1.0496
+Mean Chi^2: 1.0601
+Intercept: 1.0142 (0.0083)
+Ratio: 0.2371 (0.1386)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0011 (0.0018)
+Mean z1*z2: 0.0301
+Intercept: 0.0259 (0.0065)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/PGC-BIP-2021_BIP-PGC-2021_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1103624 SNPs remain.
+1086867 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0831 (0.0047)
+Lambda GC: 1.365
+Mean Chi^2: 1.4609
+Intercept: 1.084 (0.011)
+Ratio: 0.1822 (0.0239)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0698 (0.0035)
+Lambda GC: 1.4637
+Mean Chi^2: 1.6097
+Intercept: 1.1045 (0.0125)
+Ratio: 0.1714 (0.0204)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0181 (0.0026)
+Mean z1*z2: 0.1766
+Intercept: 0.0708 (0.0081)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1103624 SNPs remain.
+781999 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0787 (0.0049)
+Lambda GC: 1.3999
+Mean Chi^2: 1.5024
+Intercept: 1.1058 (0.0145)
+Ratio: 0.2106 (0.0289)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3473 (0.0426)
+Lambda GC: 1.1651
+Mean Chi^2: 1.1877
+Intercept: 1.0528 (0.0119)
+Ratio: 0.2811 (0.0634)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0183 (0.0089)
+Mean z1*z2: 0.047
+Intercept: 0.0196 (0.0076)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1103624 SNPs remain.
+1028429 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0834 (0.0047)
+Lambda GC: 1.3685
+Mean Chi^2: 1.4637
+Intercept: 1.0795 (0.0113)
+Ratio: 0.1714 (0.0244)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0248 (0.0044)
+Lambda GC: 1.1238
+Mean Chi^2: 1.1976
+Intercept: 1.0713 (0.0177)
+Ratio: 0.3609 (0.0894)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0017 (0.0021)
+Mean z1*z2: -0.0006
+Intercept: -0.0062 (0.0066)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1103624 SNPs remain.
+1041458 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0836 (0.0045)
+Lambda GC: 1.3685
+Mean Chi^2: 1.4638
+Intercept: 1.0788 (0.0116)
+Ratio: 0.1698 (0.0249)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.01 (0.0026)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0602
+Intercept: 1.0102 (0.0086)
+Ratio: 0.1691 (0.1423)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.01 (0.002)
+Mean z1*z2: 0.0498
+Intercept: 0.0033 (0.006)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST001241_BIP-PGC-2011_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1106924 SNPs remain.
+789930 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0671 (0.0038)
+Lambda GC: 1.5071
+Mean Chi^2: 1.6573
+Intercept: 1.123 (0.0159)
+Ratio: 0.1871 (0.0242)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.3552 (0.0437)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1864
+Intercept: 1.0491 (0.0117)
+Ratio: 0.2633 (0.0629)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.1532 (0.0104)
+Mean z1*z2: 0.6968
+Intercept: 0.4302 (0.0107)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1106924 SNPs remain.
+1030838 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0691 (0.0037)
+Lambda GC: 1.4673
+Mean Chi^2: 1.6108
+Intercept: 1.1022 (0.0141)
+Ratio: 0.1673 (0.0231)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0249 (0.0044)
+Lambda GC: 1.1238
+Mean Chi^2: 1.1967
+Intercept: 1.07 (0.0188)
+Ratio: 0.3562 (0.0955)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0004 (0.0019)
+Mean z1*z2: -0.003
+Intercept: -8.4401e-05 (0.0075)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1106924 SNPs remain.
+1043987 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0692 (0.0035)
+Lambda GC: 1.4673
+Mean Chi^2: 1.6104
+Intercept: 1.1007 (0.0134)
+Ratio: 0.165 (0.0219)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.01 (0.0026)
+Lambda GC: 1.0527
+Mean Chi^2: 1.0606
+Intercept: 1.0104 (0.0088)
+Ratio: 0.1714 (0.1445)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0014 (0.0018)
+Mean z1*z2: 0.0115
+Intercept: 0.0141 (0.0066)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 796431 SNPs remain.
+759329 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.3585 (0.041)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1853
+Intercept: 1.0459 (0.0114)
+Ratio: 0.2475 (0.0617)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0253 (0.0048)
+Lambda GC: 1.1301
+Mean Chi^2: 1.2116
+Intercept: 1.0723 (0.0212)
+Ratio: 0.3419 (0.1004)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0111 (0.007)
+Mean z1*z2: -0.0116
+Intercept: 0.0049 (0.0074)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 796431 SNPs remain.
+769045 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.3583 (0.0414)
+Lambda GC: 1.1619
+Mean Chi^2: 1.1858
+Intercept: 1.0463 (0.0113)
+Ratio: 0.2493 (0.0611)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0088 (0.0026)
+Lambda GC: 1.0588
+Mean Chi^2: 1.0653
+Intercept: 1.0177 (0.0102)
+Ratio: 0.2702 (0.1559)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: -0.0165 (0.0073)
+Mean z1*z2: -0.0077
+Intercept: 0.0144 (0.0069)
+
+Genetic Correlation
+-------------------
+...
+Reading summary statistics from /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz ...
+Read summary statistics for 1217311 SNPs.
+After merging with summary statistics, 1071515 SNPs remain.
+1071482 SNPs with valid alleles.
+Output is truncated. View as a scrollable element or open in a text editor. Adjust cell output settings...
+/home/maria/git/SOROLLA/scripts/ldsc/ldscore/irwls.py:161: FutureWarning: `rcond` parameter will change to the default of machine precision times ``max(M, N)`` where M and N are the input matrix dimensions.
+To use the future default and silence this warning we advise to pass `rcond=None`, to keep using the old, explicitly pass `rcond=-1`.
+  coef = np.linalg.lstsq(x, y)
+
+Heritability of phenotype 1
+---------------------------
+Total Observed scale h2: 0.0276 (0.0042)
+Lambda GC: 1.1207
+Mean Chi^2: 1.1925
+Intercept: 1.0573 (0.0148)
+Ratio: 0.2979 (0.0771)
+
+Heritability of phenotype 2/2
+-----------------------------
+Total Observed scale h2: 0.0087 (0.0024)
+Lambda GC: 1.0496
+Mean Chi^2: 1.059
+Intercept: 1.0161 (0.0082)
+Ratio: 0.2731 (0.1392)
+
+Genetic Covariance
+------------------
+Total Observed scale gencov: 0.0055 (0.0015)
+Mean z1*z2: 0.0554
+Intercept: 0.0283 (0.0048)
+
+Genetic Correlation
+-------------------
+...
+/home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011804_breast-carcinoma-1_original_OR.sumstats.gz  /home/maria/git/SOROLLA/ROBUSTNESS_TESTS/TEST_BETA_ODDSRATIO/MUNGED/GCST90011816_cervical-cancer-2_original_OR.sumstats.gz  0.3553  0.1084  3.2764  0.0011  0.0087     0.0024  1.0161     0.0082    0.0283       0.0048
+
+Analysis finished at Mon Nov  4 18:45:50 2024
+Total time elapsed: 11.46s
