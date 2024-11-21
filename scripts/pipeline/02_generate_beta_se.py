@@ -1,121 +1,158 @@
-# Script to generate the beta from the odds ratio
-## The beta will be named beta_added and will be in another column specifically for HDL and MR to consider.
-## Further script modifications will be needed to avoid this because we are also going to calculate the se from beta_added.
+# Script to generate beta from odds ratio and calculate standard error
 
 import pandas as pd
 import numpy as np
 import yaml
 import os
+import csv
+import gzip
 import argparse
+from collections import Counter
 
 def main():
-     parser = argparse.ArgumentParser(description="calculate beta and standar error of beta when OR is present")
-     parser.add_argument("--env", choices=["local", "remote"], required=True,
-                        help="Specify if you are running this file in local (local) or in the MN5 (remote)")
-     args = parser.parse_args()
+    parser = argparse.ArgumentParser(description="Calculate beta and standard error of beta when OR is present")
+    parser.add_argument("--env", choices=["local", "remote"], required=True,
+                        help="Specify the environment: local or remote")
+    args = parser.parse_args()
 
-     # Load data based on environment
-     config_file = "/home/maria/git/SOROLLA/config/config.yaml" if args.env == "local" else "/gpfs/projects/bsc02/mflores/gencor/config/config.yaml"
-
-    # Load configuration file securely
-     try:
+    # Load configuration file
+    config_file = "/home/maria/git/SOROLLA/config/config.yaml" if args.env == "local" else "/gpfs/projects/bsc02/mflores/gencor/config/config.yaml"
+    try:
         with open(config_file) as f:
             config = yaml.safe_load(f)
-     except FileNotFoundError:
-        print(f"Error: Configuration file not found: {config_file}")
+    except Exception as e:
+        print(f"Error loading configuration: {e}")
         exit(1)
-     except yaml.YAMLError as e:
-        print(f"Error: Invalid YAML configuration: {e}")
-        exit(1)
-        
-
-    # Access values from config
-     base_path = config[args.env]["base_path"]
-     print(f"Base path: {base_path}")
-
-     sumstats_folder = config["SumStats"]["sumstats_folder"]
-     description_csv = config["SumStats"]["description_csv"]
-     description_csv_path = os.path.join(base_path, sumstats_folder, description_csv)
-     
-	 #Call the function 
-     write_beta_and_se(description_csv_path, args.env)
-
-
-
-def calculate_beta_and_se(row, env):
-    """
-    beta = log(OR)
-    Calculate the beta coefficient and the standard error for each SNP
-    SE_beta = (SE.OddsRatio)/OddsRatio 
-    or
-    upperboundOR = OR + 1.96 * SE.OddsRatio >> upperboundbeta = log(upperboundOR)
-    lowerboundOR = OR - 1.96 * SE.OddsRatio >> lowerboundbeta = log(lowerboundOR)
-    SE_beta = (upperboundbeta - lowerboundbeta) / (2 * 1.96)
-    """
-
-    # Load the file path
-    print("Loading path")
-    file_path = row[f'{env}_raw_path']
     
-    # Check file format
+    # Extract paths
+    base_path = config[args.env]["base_path"]
+    sumstats_folder = config["SumStats"]["sumstats_folder"]
+    description_csv = config["SumStats"]["description_csv"]
+    description_csv_path = os.path.join(base_path, sumstats_folder, description_csv)
+    
+    # Process the main CSV
+    print("Processing the main description CSV to update datasets with beta and SE calculations...")
+    process_main_csv(args.env, description_csv_path)
+
+def get_delimiter(file_path: str, sample_size: int = 4096) -> str:
+    """Detect the delimiter of a file dynamically."""
+    print(f"Detecting delimiter for file: {file_path}")
     if file_path.endswith('.gz'):
-        compression = 'gzip'
-    elif file_path.endswith('.tsv') or file_path.endswith('.txt'):
-        compression = None
+        with gzip.open(file_path, 'rt') as f:
+            sample = f.read(sample_size)
     else:
-        print(f"Warning: Unsupported file format for file {file_path}.")
+        with open(file_path, 'r') as f:
+            sample = f.read(sample_size)
+
+    try:
+        delimiter = csv.Sniffer().sniff(sample).delimiter
+    except csv.Error:
+        potential_delimiters = ['\t', ',', ';', ' ', '|']
+        delimiter_counts = Counter(char for char in sample if char in potential_delimiters)
+        delimiter = delimiter_counts.most_common(1)[0][0] if delimiter_counts else '\t'
+    print(f"Detected delimiter: '{delimiter}'")
+    return delimiter
+
+def calculate_beta_and_se(data, or_col, se_col=None):
+    """Calculate beta (log(OR)) and standard error (sebeta) for a dataset."""
+    print("Converting columns to numeric types (if needed)...")
+    try:
+        if not np.issubdtype(data[or_col].dtype, np.number):
+            data[or_col] = pd.to_numeric(data[or_col], errors='coerce')
+        if se_col and se_col in data.columns and not np.issubdtype(data[se_col].dtype, np.number):
+            data[se_col] = pd.to_numeric(data[se_col], errors='coerce')
+    except Exception as e:
+        print(f"Error converting columns to numeric: {e}")
+        return data
+
+    print("Dropping rows with missing OR values...")
+    data = data.dropna(subset=[or_col])
+
+    # Calculate beta
+    if 'beta_added' not in data.columns or data['beta_added'].isna().all():
+        print("Calculating beta (log(OR))...")
+        data['beta_added'] = np.log(data[or_col])
+
+    # Calculate SE_beta
+    if 'sebeta' not in data.columns or data['sebeta'].isna().all():
+        if se_col and se_col in data.columns:
+            print("Calculating standard error (SE_beta)...")
+            upperboundOR = data[or_col] + 1.96 * data[se_col]
+            lowerboundOR = data[or_col] - 1.96 * data[se_col]
+            upperboundbeta = np.log(upperboundOR)
+            lowerboundbeta = np.log(lowerboundOR)
+            data['sebeta'] = (upperboundbeta - lowerboundbeta) / (2 * 1.96)
+        else:
+            print("SE column not available, setting SE_beta to NaN...")
+            data['sebeta'] = np.nan
+    
+    return data
+
+def update_main_csv(env, row, description_csv_path):
+    file_path = row[f'{env}_raw_path']  # Dynamically select the correct path based on the environment
+    print(f"\nProcessing dataset: {row['label']} (Path: {file_path})")
+
+    # Skip if both beta and SE are already added
+    if pd.notna(row.get('b')) and pd.notna(row.get('se')):
+        print(f"Skipping {row['label']} - beta and SE already present.")
         return row
 
-    # Read the file
+    # Determine file compression and delimiter
+    compression = 'gzip' if file_path.endswith('.gz') else None
+    separator = get_delimiter(file_path)
+
+    # Read the dataset
+    print(f"Reading dataset with separator '{separator}' and compression: {compression}")
     try:
-        data = pd.read_csv(file_path, sep='\t', compression=compression)  # Assume tab-separated values for .tsv and .txt
-    except EOFError:
-        print(f"Warning: File {file_path} is corrupted or incomplete.")
-        return row
+        data = pd.read_csv(file_path, sep=separator, compression=compression)
+        print(f"Dataset {row['id']}_{row['label']} successfully loaded. First rows:\n{data.head(2)}")
     except Exception as e:
         print(f"Error reading file {file_path}: {e}")
         return row
 
-    # Calculate beta and SE_beta
-    print(f"Starting calculation for",row["id"]," ", row["label"])
-    if pd.isna(row["b"]) and pd.notna(row["OR"]) and pd.notna(row["se"]):
-        beta_added = np.log(row["OR"])
-        data["beta_added"] = beta_added
+    # Calculate beta and SE
+    print("Calculating beta and SE values...")
+    data = calculate_beta_and_se(data, row['OR'], row.get('se', None))
+    print(f"Modified dataset {row['id']}_{row['label']} preview:\n{data.head(2)}")
 
-        upperboundOR = row["OR"] + 1.96 * row["se"]
-        lowerboundOR = row["OR"] - 1.96 * row["se"]
-        
-        upperboundbeta = np.log(upperboundOR)
-        lowerboundbeta = np.log(lowerboundOR)
-        
-        sebeta = (upperboundbeta - lowerboundbeta) / (2 * 1.96)
-        data["sebeta"] = sebeta
+    # Save the modified dataset
+    try:
+        print("Saving the updated dataset...")
+        data.to_csv(file_path, sep=separator, index=False, compression=compression)
+        print(f"Dataset {file_path} successfully updated.")
+    except Exception as e:
+        print(f"Error saving updated dataset: {e}")
 
-        # Save the updated DataFrame
-        print("Saving the updated datafile")
-        try:
-            if compression == 'gzip':
-                data.to_csv(file_path, sep='\t', index=False, compression='gzip')
-            else:
-                data.to_csv(file_path, sep='\t', index=False)
-            print(f"Dataset {file_path} has been modified with beta and SE columns.")
-            
-            # Update the row with 'beta_added'
-            print("updating the csv")
-            row['b'] = 'beta_added'
-            print(f"Finished with", row["label"])
-        except Exception as e:
-            print(f"Error writing file {file_path}: {e}")
-    else:
-        print(f"{row['id']} already contains a beta column")
+    # Update main CSV row
+    if 'beta_added' in data.columns and row.get('b') is None:
+        row['b'] = 'beta_added'
+    if 'sebeta' in data.columns and row.get('se') is None:
+        row['se'] = 'sebeta'
+
+    # Save back the updated row
+    print("Updating the main CSV...")
+    try:
+        main_csv = pd.read_csv(description_csv_path)
+        main_csv.update(pd.DataFrame([row]))
+        main_csv.to_csv(description_csv_path, index=False)
+        print(f"Main CSV successfully updated with changes for {row['label']}.")
+    except Exception as e:
+        print(f"Error updating main CSV: {e}")
+
     return row
 
+def process_main_csv(env, description_csv_path):
+    """Process each row in the main CSV to update beta and SE columns."""
+    print(f"Loading main CSV from: {description_csv_path}")
+    main_csv = pd.read_csv(description_csv_path)
+    print(f"Processing {len(main_csv)} datasets from the main CSV...")
 
-def write_beta_and_se(csv_file_path, env):
-    df = pd.read_csv(csv_file_path)
-    df = df.apply(lambda row: calculate_beta_and_se(row, env), axis=1)
-    df.to_csv(csv_file_path, index=False, sep='\t')  # Ensure using tab separator for consistency
+    # Ensure all required arguments are passed to the update_main_csv function
+    main_csv = main_csv.apply(lambda row: update_main_csv(env, row, description_csv_path), axis=1)
 
+    print("Saving the final updated main CSV...")
+    main_csv.to_csv(description_csv_path, index=False)
+    print("All datasets processed and main CSV updated successfully.")
 
 if __name__ == "__main__":
     main()
