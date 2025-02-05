@@ -41,7 +41,7 @@ filtered_catalog <- filtered_catalog %>%
 
 #Filter the SampleSize to at least 10K
 filtered_catalog <- filtered_catalog %>%
-                filter(SampleSize >= 5000)
+                filter(SampleSize >= 10000)
 
 # Save filtered_catalog as a CSV file
 write.csv(filtered_catalog, "/home/maria/git/SOROLLA/SumStats/FM_filtered_catalog.csv", row.names = FALSE)

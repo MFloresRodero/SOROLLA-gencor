@@ -75,6 +75,7 @@ scripts/SUPERGNOVA/
 scripts/OLD_OR_DISCARDED/
 scripts/JOBS_MN/
 
+
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints
 
@@ -87,3 +88,8 @@ SumStats/Wrangled/
 SumStats/paired_datasets.csv
 SumStats/reference_class_ids.csv
 SumStats/supergnova_paired_datasets.csv
+
+
+# Images generated for presentations
+relationship_comorbidities_results.*
+relationship_comorbidities.*

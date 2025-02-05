@@ -4,10 +4,14 @@ name: genetic_correlation_pipeline
 SumStats:
   sumstats_folder: SumStats/
   raw_folder: SumStats/RAW/
+  preprocessed_folder: SumStats/PREPROCESSED/
+  preprocessed_saving_process: 0_checkpoints/
   munged_folder: SumStats/Munged/
   wrangled_folder: SumStats/Wrangled/
+  wrangle_commands: SumStats/Wrangled/commands/
   raw_catalog: excell_sumstats_description.csv
   description_csv: final_sumstats_description.csv
+  matrix_description: data_description_matrix.csv
   paired_data: paired_datasets.csv
   MR_data: MR_paired_datasets.csv
   gnova_paired: gnova_paired_datasets.csv
@@ -77,3 +81,8 @@ remote:
   environments_folder: /gpfs/projects/bsc02/mflores/singularity
   singularity_ldsc: ldsc.sif
   HDL_environment: HDL_with_R.sif
+
+shared:
+  base_path: /gpfs/projects/hpcsharing/364592
+  environments_folder: /gpfs/projects/hpcsharing/364592/singularity
+  singularity_ldsc: ldsc.sif
