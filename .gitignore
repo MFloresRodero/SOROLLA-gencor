@@ -94,3 +94,5 @@ SumStats/data_description_matrix.csv
 # Images generated for presentations
 relationship_comorbidities_results.*
 relationship_comorbidities.*
+
+diagrams/
