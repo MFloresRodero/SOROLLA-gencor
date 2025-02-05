@@ -36,8 +36,7 @@ def main():
                 'id': row['id'],
                 'disease': row['disease'],
                 'label': row['label'],
-                'filename': row['filename'],
-                f'{args.env}_raw_path': row[f'{args.env}_raw_path'],
+                'N_num': row['N_num'],
                 f'{args.env}_munged_path': row[f'{args.env}_munged_path'],
                 f'{args.env}_wrangled_path': row[f'{args.env}_wrangled_path']
             })
@@ -57,9 +56,9 @@ def main():
 
     with open(output_csv_path, 'a', newline='') as csvfile:
         fieldnames = [
-            'id_1', 'disease_1', 'label_1', 'filename_1', f'{args.env}_raw_path_1', f'{args.env}_munged_path_1', f'{args.env}_wrangled_path_1',
-            'id_2', 'disease_2', 'label_2', 'filename_2', f'{args.env}_raw_path_2', f'{args.env}_munged_path_2', f'{args.env}_wrangled_path_2',
-            'ldsc', 'ldsc_path', 'hdl', 'hdl_path'
+            'id_1', 'disease_1', 'label_1', 'N_num_1', f'{args.env}_munged_path_1', f'{args.env}_wrangled_path_1',
+            'id_2', 'disease_2', 'label_2', 'N_num_2', f'{args.env}_munged_path_2', f'{args.env}_wrangled_path_2',
+            'ldsc', 'ldsc_path', 'hdl', 'hdl_path', 'supergnova', 'supergnova_path'
         ]
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
@@ -71,23 +70,23 @@ def main():
             if (dataset_1['id'], dataset_2['id']) not in existing_pairs:
                 row_data = {
                     'id_1': dataset_1['id'],
-                    'disease_label_1': dataset_1['disease_label'],
+                    'disease_1': dataset_1['disease'],
                     'label_1': dataset_1['label'],
-                    'filename_1': dataset_1['filename'],
-                    f'{args.env}_raw_path_1': dataset_1[f'{args.env}_raw_path'],
+                    'N_num_1': dataset_1['N_num'],
                     f'{args.env}_munged_path_1': dataset_1[f'{args.env}_munged_path'],
                     f'{args.env}_wrangled_path_1': dataset_1[f'{args.env}_wrangled_path'],
                     'id_2': dataset_2['id'],
-                    'disease_label_2': dataset_2['disease_label'],
+                    'disease_2': dataset_2['disease'],
                     'label_2': dataset_2['label'],
-                    'filename_2': dataset_2['filename'],
-                    f'{args.env}_raw_path_2': dataset_2[f'{args.env}_raw_path'],
+                    'N_num_2': dataset_1['N_num'],
                     f'{args.env}_munged_path_2': dataset_2[f'{args.env}_munged_path'],
                     f'{args.env}_wrangled_path_2': dataset_2[f'{args.env}_wrangled_path'],
                     'ldsc': "False",
-                    'ldsc_path': "NA",
+                    'ldsc_path': None,
                     'hdl': "False",
-                    'hdl_path': "NA"
+                    'hdl_path': None,
+                    'supergnova': "False",
+                    'supergnova_path': None
                 }
 
                 writer.writerow(row_data)
