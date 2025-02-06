@@ -96,6 +96,9 @@ def create_and_append_dataframe(input_file, output_file, desired_columns, config
         else:
             continue
 
+    # Change extension from the manually extracted file
+    df.loc[df.id == "GCST001241"]['filename'] = "GCST001241.txt"
+
     # Separate the standard error columns from b and OR
     df.rename(columns={"se":"se_beta"}, inplace=True)
     df["se_OR"] = None
