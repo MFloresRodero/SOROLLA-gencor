@@ -224,8 +224,9 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 		elif original_name is None:
 			log_checkpoint.append(f"Column '{colname}' has no mapping in the description.")
 			print(f"Column '{colname}' has no mapping in the description. ")
-			# df[colname] = "NotAvailable"
-
+			df[colname] = "NotAvailable"
+			log_checkpoint.append(f"Column '{colname}' being created as placeholder.")
+			print(f"Column '{colname}' being created as placeholder. ")
 	
 	log_checkpoint.append(df.head())
 	print(df.head())
@@ -320,14 +321,14 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 
 
 	# Loop to transform the columns into numeric dtype
-	numeric_columns_list = ["frq","zscore", "beta", "odds_ratio", "beta_standard_error", "odds_ratio_standard_error", "p_value", "Ncol", "Nca_col", "Nco_col", "INFO"]
-	# numeric_columns_list = []
-	# for col in numeric_columns:
-	# 	if "NotAvailable" not in df[col].values:
-	# 		numeric_columns_list.append(col)
-	# 	else:
-	# 		continue
-	# print(numeric_columns_list)
+	numeric_columns = ["frq","zscore", "beta", "odds_ratio", "beta_standard_error", "odds_ratio_standard_error", "p_value", "Ncol", "Nca_col", "Nco_col", "INFO"]
+	numeric_columns_list = []
+	for col in numeric_columns:
+		if "NotAvailable" not in df[col].values:
+			numeric_columns_list.append(col)
+		else:
+			continue
+	print(numeric_columns_list)
 
 
 	for colname in numeric_columns_list:
@@ -355,19 +356,21 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 
 	# Create a list of columns you want to keep if they exist in the DataFrame
 	desired_columns = [col for col in variables_columns_matrix.keys() if variables_columns_matrix[col] is not None]
-
+	
 	# Keep only the columns that exist in the DataFrame
-	existing_columns = [col for col in desired_columns if col in df.columns]
+	# existing_columns = [col for col in desired_columns if col in df.columns]
 
-	log_checkpoint.append(f"The dataframe only contains the following columns:{existing_columns}")
+	# log_checkpoint.append(f"The dataframe only contains the following columns:{existing_columns}")
 
 	# Filter the DataFrame to keep only the desired existing columns
-	df = df[existing_columns]
+	# df = df[existing_columns]
 
 		# # Remove if they are empty
-		# columns_to_remove = df.columns[df.isin(['NotAvailable']).any()]
-		# columns_to_keep = [col for col in df.columns if col not in columns_to_remove]
-		# df = df[columns_to_keep]
+	# desired_columns = list(variables_columns_matrix.keys())
+	# df = df[desired_columns]
+	columns_to_remove = df.columns[df.isin(['NotAvailable']).any()]
+	columns_to_keep = [col for col in df.columns if col not in columns_to_remove]
+	df = df[columns_to_keep]
 	
 	log_checkpoint.append(df.head())
 	print(df.head())
