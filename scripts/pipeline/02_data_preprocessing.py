@@ -10,6 +10,8 @@ import gzip
 import csv
 import re
 import numpy as np
+import scipy.stats as stats
+
 
 def main():
     parser = argparse.ArgumentParser(description=
@@ -61,6 +63,11 @@ def main():
     print(preprocessed_folder_path)
     preprocessed_folder_files_saving_path = os.path.join(base_path, preprocessed_folder, preprocessed_checkpoint)
     print(preprocessed_folder_files_saving_path)
+
+
+	# Display options:
+    pd.set_option('display.max_rows', None)
+    pd.set_option('display.max_columns', None)
 
 	# Call function that iterates through the rows.
     create_matrix_description(description_csv_path, matrix_description_path)
@@ -234,6 +241,14 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 	print(df.dtypes)
 
 
+	# Avoid duplicates
+	df = df.loc[:, ~df.columns.duplicated()]
+
+	log_checkpoint.append(df.head())
+	print(df.head())
+	log_checkpoint.append(df.dtypes)
+	print(df.dtypes)
+
 	# Filter out rows where the SNP is missing.
 	len_before_snp_removal = len(df)
 	log_checkpoint.append(f"The initial length of the df before removing rows with missing rsID: {len_before_snp_removal}")
@@ -287,8 +302,10 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 		
 		#Calculate beta
 		df["beta"] = np.log(df["odds_ratio"])
+		df["beta"] = pd.to_numeric(df["beta"], errors="coerce")
 		update_matrix_Ncol(row["id"], matrix_description_path, "beta")
 	
+		
 	elif pd.isna(row["OR"]) and pd.isna(row["b"]):
 		log_checkpoint.append(f"Error: B missing and column '{row['OR']}' (mapped to OR) not found in dataset {row['id']}. Skipping this dataset, b could not be imputed.")
 		print(f"Error: B missing and column '{row['OR']}' (mapped to OR) not found in dataset {row['id']}. Skipping this dataset, b could not be imputed.")
@@ -298,26 +315,62 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 		print(f"{row['id']} already contains a beta column.")
 
 	print(df.head())
-	
-	# If beta did not exist, calculate the new standard error. Otherwise, pass.
-	if pd.isna(row["b"]) and pd.notna(row["OR"]) and pd.notna(row["se_OR"]):
-		try:
-			log_checkpoint.append("Calculating standard error (beta_standard_error) from odds_ratio and the odds_ratio_standard_error...")
-			print("Calculating standard error (beta_standard_error) from odds_ratio and the odds_ratio_standard_error...")
-			df = df.dropna(subset=["odds_ratio", "odds_ratio_standard_error"])
 
-			upperboundOR = df["odds_ratio"] + 1.96 * df["odds_ratio_standard_error"]
-			lowerboundOR = df["odds_ratio"] - 1.96 * df["odds_ratio_standard_error"]
-			upperboundbeta = np.log(upperboundOR)
-			lowerboundbeta = np.log(lowerboundOR)
-			df["beta_standard_error"] = (upperboundbeta - lowerboundbeta) / (2 * 1.96)
-			df["beta_standard_error"] = pd.to_numeric(df["beta_standard_error"], errors="coerce")
-			update_matrix_Ncol(row["id"], matrix_description_path, "beta_standard_error")
-		
+	# Calculate zscore with beta column
+	if "beta" in df.columns and pd.isna(row["z"]):
+		try:
+			df["beta"] = pd.to_numeric(df["beta"], errors="coerce")
+			df["p_value"] = pd.to_numeric(df["p_value"], errors="coerce")
+			df["zscore"] = np.sign(df['beta']) * stats.norm.ppf(1 - df['p_value'] / 2)
+			update_matrix_Ncol(row["id"], matrix_description_path, "zscore")
+			log_checkpoint.append("Zscore column was created from beta")
+			print("Zscore column was created from beta")
 		except KeyError:
-			log_checkpoint.append("se_OR column not available. Skipping beta_standard_error calculation.")
-			print("se_OR column not available. Skipping beta_standard_error calculation.")
-    
+				log_checkpoint.append("Something went wrong")
+				print("Something went wrong")
+		
+	elif pd.isna(row["b"]) and pd.isna(row["OR"]):
+		log_checkpoint.append("Can't calculate zscore, beta and OR missing")
+		print("Can't calculate zscore, beta and OR missing")
+
+
+	# If beta did not exist, calculate the new standard error. Otherwise, pass.
+	if "beta_standard_error" not in df.columns or pd.isna(row["se_beta"]):
+		print("Starting beta_standard_error calculation...")
+		if pd.notna(row["OR"]) and pd.notna(row["se_OR"]) and df["odds_ratio_standard_error"].notna().any():
+			try:
+				log_checkpoint.append("Calculating standard error (beta_standard_error) from odds_ratio and the odds_ratio_standard_error...")
+				print("Calculating standard error (beta_standard_error) from odds_ratio and the odds_ratio_standard_error...")
+				df = df.dropna(subset=["odds_ratio", "odds_ratio_standard_error"])
+
+				upperboundOR = df["odds_ratio"] + 1.96 * df["odds_ratio_standard_error"]
+				lowerboundOR = df["odds_ratio"] - 1.96 * df["odds_ratio_standard_error"]
+				upperboundbeta = np.log(upperboundOR)
+				lowerboundbeta = np.log(lowerboundOR)
+				df["beta_standard_error"] = (upperboundbeta - lowerboundbeta) / (2 * 1.96)
+				df["beta_standard_error"] = pd.to_numeric(df["beta_standard_error"], errors="coerce")
+				update_matrix_Ncol(row["id"], matrix_description_path, "beta_standard_error")
+				log_checkpoint.append("Calculated se_beta with se_OR")
+				print("Calculated se_beta with se_OR.")
+			
+			except KeyError:
+				log_checkpoint.append("se_OR column not available. Skipping beta_standard_error calculation with se_OR.")
+				print("se_OR column not available. Skipping beta_standard_error calculation with se_OR.")
+	
+		elif "zscore" in df.columns and "p_value" in df.columns:
+			try:
+				df["zscore"] = pd.to_numeric(df["zscore"], errors="coerce")
+				df['beta_standard_error'] = df['beta'] / df['zscore']
+				update_matrix_Ncol(row["id"], matrix_description_path, "beta_standard_error")
+				log_checkpoint.append("Calculated se_beta with zscore")
+				print("Calculated se_beta with zscore.")
+			except KeyError:
+				log_checkpoint.append("Error calculating the se_beta with zscore")
+				print("Error calculating the se_beta with zscore")
+		else:
+			log_checkpoint.append("No method could calculate the se_beta")
+			print("No method could calculate the se_beta")
+
 
 
 	# Loop to transform the columns into numeric dtype
@@ -366,17 +419,16 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 	# df = df[existing_columns]
 
 		# # Remove if they are empty
-	# desired_columns = list(variables_columns_matrix.keys())
-	# df = df[desired_columns]
-	columns_to_remove = df.columns[df.isin(['NotAvailable']).any()]
+	desired_columns = list(variables_columns_matrix.keys())
+	df = df[desired_columns]
+	columns_notavailable = df.columns[df.isin(['NotAvailable']).any()]
+	columns_empty = df.columns[df.isna().all()]
+	columns_to_remove = list(columns_notavailable) + list(columns_empty)
 	columns_to_keep = [col for col in df.columns if col not in columns_to_remove]
 	df = df[columns_to_keep]
 	
 	log_checkpoint.append(df.head())
 	print(df.head())
-
-	# Avoid duplicates
-	df = df.loc[:, ~df.columns.duplicated()]
 
 	log_checkpoint.append(df.head())
 	print(df.head())

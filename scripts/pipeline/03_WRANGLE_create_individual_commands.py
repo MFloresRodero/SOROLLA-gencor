@@ -61,18 +61,18 @@ def generate_wrangling_command(env, ref_row, matrix_row, wrangle_output_path, wr
         wrangle_output_path_final = os.path.join(wrangle_output_path, f"{ref_row['label']}_{ref_row['id']}")
         print(f"This is the path where the wrangled file will be saved: {wrangle_output_path}")
 
-        if matrix_row["zscore"] in [1, 2]:
-            command = f"""Rscript {wrangle_script_path} \\
-gwas.file={ref_row[processed_path_col]} \\
-LD.path={ref_panel_path} \\
-"SNP=rsID A1=A1 A2=A2 N=Ncol Z=zscore" \\
-output.file={wrangle_output_path_final} \\
-log.file={wrangle_output_path_final}\n"""
-        elif matrix_row["beta"] in [1, 2] and matrix_row["beta_standard_error"] in [1, 2]:
+        if  matrix_row["beta"] in [1, 2] and matrix_row["beta_standard_error"] in [1, 2]:
             command = f"""Rscript {wrangle_script_path} \\
 gwas.file={ref_row[processed_path_col]} \\
 LD.path={ref_panel_path} \\
 SNP=rsID A1=A1 A2=A2 N=Ncol b=beta se=beta_standard_error \\
+output.file={wrangle_output_path_final} \\
+log.file={wrangle_output_path_final}\n"""
+        elif matrix_row["zscore"] in [1, 2]:
+            command = f"""Rscript {wrangle_script_path} \\
+gwas.file={ref_row[processed_path_col]} \\
+LD.path={ref_panel_path} \\
+"SNP=rsID A1=A1 A2=A2 N=Ncol Z=zscore" \\
 output.file={wrangle_output_path_final} \\
 log.file={wrangle_output_path_final}\n"""
         else:
