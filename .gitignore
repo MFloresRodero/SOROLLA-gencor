@@ -90,6 +90,8 @@ SumStats/reference_class_ids.csv
 SumStats/supergnova_paired_datasets.csv
 SumStats/PREPROCESSED/
 SumStats/data_description_matrix.csv
+SumStats/final_sumstats_description (copy).csv
+SumStats/final_sumstats_description.csv
 
 # Images generated for presentations
 relationship_comorbidities_results.*
