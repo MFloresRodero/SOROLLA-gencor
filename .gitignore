@@ -63,6 +63,8 @@ Results/Supergnova/
 Results/gnova_genetic_correlation.csv
 Results/HDL_genetic_correlation.csv
 Results/ldsc_genetic_correlation_corrected_old1.csv
+Results/*
+
 
 # Scripts unready or unable to share
 ## Unable to share
@@ -74,7 +76,7 @@ scripts/CONTROLS/
 scripts/SUPERGNOVA/
 scripts/OLD_OR_DISCARDED/
 scripts/JOBS_MN/
-
+scripts/pipeline/sumstats_modifications.py
 
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints
