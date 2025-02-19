@@ -261,6 +261,8 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 
 
 	# Filter out rows where the A1 or A2 have more than 2 letters.
+	df['A1'] = df['A1'].astype(object)
+	df['A2'] = df['A2'].astype(object)
 	alleles = ["A1", "A2"]
 	for a in alleles:
 		remove_from_alleles = df[a].apply(lambda x: len(re.findall(r'[a-zA-Z]', str(x))) > 2)
@@ -317,7 +319,7 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 	print(df.head())
 
 	# Calculate zscore with beta column
-	if "beta" in df.columns and pd.isna(row["z"]):
+	if pd.isna(row["z"]) and not (df["beta"].astype(str) == "NotAvailable").all():
 		try:
 			df["beta"] = pd.to_numeric(df["beta"], errors="coerce")
 			df["p_value"] = pd.to_numeric(df["p_value"], errors="coerce")
@@ -335,7 +337,7 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 
 
 	# If beta did not exist, calculate the new standard error. Otherwise, pass.
-	if "beta_standard_error" not in df.columns or pd.isna(row["se_beta"]):
+	if (df["beta_standard_error"].astype(str) == "NotAvailable").all() or pd.isna(row["se_beta"]):
 		print("Starting beta_standard_error calculation...")
 		if pd.notna(row["OR"]) and pd.notna(row["se_OR"]) and df["odds_ratio_standard_error"].notna().any():
 			try:
@@ -357,7 +359,7 @@ def transform_dataset(row, env, preprocessed_folder_path, matrix_description_pat
 				log_checkpoint.append("se_OR column not available. Skipping beta_standard_error calculation with se_OR.")
 				print("se_OR column not available. Skipping beta_standard_error calculation with se_OR.")
 	
-		elif "zscore" in df.columns and "p_value" in df.columns:
+		elif not (df["zscore"].astype(str) == "NotAvailable").all() and not pd.isna(row["p"]):
 			try:
 				df["zscore"] = pd.to_numeric(df["zscore"], errors="coerce")
 				df['beta_standard_error'] = df['beta'] / df['zscore']
