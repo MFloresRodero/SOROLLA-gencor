@@ -53,7 +53,7 @@ def main():
     matrix_csv_path = os.path.join(base_path, sumstats_folder, matrix_description)
 
     generate_and_save_commands(args.env, description_csv_path, matrix_csv_path, wrangle_output_path, command_output_path, wrangle_script_path, ref_panel_path)
-    run_wrangle_commands(description_csv_path, command_output_path)
+    run_wrangle_commands(args.env, description_csv_path, command_output_path, wrangle_output_path)
 
 def generate_wrangling_command(env, ref_row, matrix_row, wrangle_output_path, wrangle_script_path, ref_panel_path, command_file_path):
         processed_path_col = f"{env}_preprocessed_path"
@@ -96,7 +96,7 @@ def generate_and_save_commands(env, description_csv_path, matrix_csv_path, wrang
         os.makedirs(wrangle_output_path)
         
     for index, ref_row in description_csv.iterrows():
-        if str(ref_row["wrangled"]) != "Generated":
+        if str(ref_row["wrangled"]) not in ["Generated", "True"]:
             try:
                 print("The command for this dataset has not being created so the command will be generated now.")
                 matrix_row = matrix_data.loc[matrix_data["id"]==ref_row["id"]].iloc[0]
@@ -118,8 +118,9 @@ def generate_and_save_commands(env, description_csv_path, matrix_csv_path, wrang
             print(f"{ref_row['label']}_{ref_row['id']} skipped, command already generated")
 
 
-def run_wrangle_commands(description_csv_path, command_output_path):
+def run_wrangle_commands(env, description_csv_path, command_output_path, wrangle_output_path):
     description_csv = pd.read_csv(description_csv_path)
+    wrangle_output_path_final = os.path.join(wrangle_output_path, f"{ref_row['label']}_{ref_row['id']}")
 
     for command in os.listdir(command_output_path):
         if command.endswith("_command.sh"):
@@ -147,6 +148,7 @@ def run_wrangle_commands(description_csv_path, command_output_path):
                     print(f"Starting wrangling for {match_row}")
                     subprocess.run(["sh", command_file_path], check=True)
                     description_csv.at[index, "wrangled"] = "True"
+                    description_csv.at[index, f"{env}_wrangled_path"] = wrangle_output_path_final
                     description_csv.to_csv(description_csv_path, index=False)
                     print(f"Successfully run the wrangle command {command_file_path}")
                 
