@@ -2,7 +2,7 @@ name: genetic_correlation_pipeline
 
 # Common configuration
 SumStats:
-  sumstats_folder: SumStats/
+  sumstats_folder: /SumStats/
   raw_folder: SumStats/RAW/
   preprocessed_folder: SumStats/PREPROCESSED/
   preprocessed_saving_process: 0_checkpoints/
@@ -13,9 +13,16 @@ SumStats:
   description_csv: final_sumstats_description.csv
   matrix_description: data_description_matrix.csv
   paired_data: paired_datasets.csv
-  MR_data: MR_paired_datasets.csv
-  gnova_paired: gnova_paired_datasets.csv
-  supergnova_paired: supergnova_paired_datasets.csv
+  paired_data_copy: paired_datasets_copy_merge.csv
+  supergnova_folder: Supergnova_paired/
+  MR_folder: MR_paired/
+  cancer_paired: cancer_paired.csv
+  psychiatric_paired: psychiatric_paired.csv
+  neuro_paired: neuro_paired.csv
+  cancer_psy_paired: cancer_psy_paired.csv
+  cancer_neuro_paired: cancer_neuro_paired.csv
+  psychiatric_neuro_paired: psychnih_neuro_paired.csv
+
 
 Scripts:
   pipeline:
@@ -46,16 +53,12 @@ Scripts:
 Results:
   results_folder: /Results/
   ldsc_results_csv: ldsc_genetic_correlation.csv
+  ldsc_results_corrected_csv: ldsc_genetic_correlation_pcorrected.csv
   folder_ldsc: ldsc/
   gnova_results_csv: gnova_genetic_correlation.csv
-  folder_gnova: Gnova/
-  supergnova_results_csv: supergnova_genetic_correlation.csv
   folder_supergnova: Supergnova/
-  hdl_results_csv: hdl_genetic_correlation.csv
   folder_hdl: HDL/
-  plots:
-    ldsc_heatmap: plots/ldsc_heatmap.png
-    hdl_heatmap: plots/hdl_heatmap.png
+  hdl_results_csv: hdl_genetic_correlation.csv
   MR_folder: MR/
 
 reference_genomes:

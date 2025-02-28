@@ -8,6 +8,8 @@ def main():
     parser = argparse.ArgumentParser(description="This script runs the ldsc software from the paired_datasets.csv file")
     parser.add_argument("--env", choices=["local", "remote"], required=True,
                         help="Specify if you are running this file in local (local) or in the MN5 (remote)")
+    parser.add_argument("--type", choices=["can", "psy", "neu", "can-psy", "can_neu", "psy_neu"], required=True,
+                        help="Choose what paired_dataset to use, diff means the diseases are from different categories")
     args = parser.parse_args()
 
     # Load data based on environment
@@ -29,7 +31,28 @@ def main():
     print("This is the base path:", base_path)
     # Input files
     sumstats_folder = config["SumStats"]["sumstats_folder"]
-    input_csv = os.path.join(base_path, sumstats_folder, config["SumStats"]["supergnova_paired"])
+    supergnova_paired = config["SumStats"]["supergnova_folder"]
+
+    # Select input csv depending on what we want to run 
+    if args.type == "can":
+        supergnova_file = config["SumStats"]["cancer_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+    elif args.type == "psy":
+        supergnova_file = config["SumStats"]["psychiatric_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+    elif args.type == "neu":
+        supergnova_file = config["SumStats"]["neuro_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+    elif args.type == "can-psy":
+        supergnova_file = config["SumStats"]["cancer_psy_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+    elif args.type == "can-neu":
+        supergnova_file = config["SumStats"]["cancer_neuro_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+    elif args.type == "can-psy":
+        supergnova_file = config["SumStats"]["psychiatric_neuro_paired"]
+        input_csv = f"{base_path}{sumstats_folder}{supergnova_paired}{supergnova_file}"
+
     # Supergnova files
     supergnova_script = config["Scripts"]["SUPERGNOVA"]["supergnova_software"]
     supergnova_script_path = os.path.join(base_path, supergnova_script)
