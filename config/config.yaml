@@ -16,12 +16,14 @@ SumStats:
   paired_data_copy: paired_datasets_copy_merge.csv
   supergnova_folder: Supergnova_paired/
   MR_folder: MR_paired/
-  cancer_paired: cancer_paired.csv
-  psychiatric_paired: psychiatric_paired.csv
-  neuro_paired: neuro_paired.csv
-  cancer_psy_paired: cancer_psy_paired.csv
-  cancer_neuro_paired: cancer_neuro_paired.csv
-  psychiatric_neuro_paired: psychnih_neuro_paired.csv
+  supergnova_paired: supergnova_paired.csv
+  MR_paired: MR_paired.csv
+  # cancer_paired: cancer_paired.csv
+  # psychiatric_paired: psychiatric_paired.csv
+  # neuro_paired: neuro_paired.csv
+  # cancer_psy_paired: cancer_psy_paired.csv
+  # cancer_neuro_paired: cancer_neuro_paired.csv
+  # psychiatric_neuro_paired: psy_neuro_paired.csv
 
 
 Scripts:
@@ -32,12 +34,15 @@ Scripts:
     automatised_wrangle_script: scripts/pipeline/03_WRANGLE_create_individual_commands.py
     run_individual_wrangle_commands: scripts/pipeline/03_WRANGLE_run_wrangle_commands.sh
     create_pairs: scripts/pipeline/04_LDSC_create_pairs_diseases.py
-    ldsc_genetic_correlation: scripts/pipeline/05_LDSC_run_pairs_automatised.py
-    hdl_genetic_correlation: scripts/pipeline/05_HDL_run_pairs_automatised.py
-    supergnova_genetic_correlation: scripts/pipeline/05_SUPERGNOVA_run_pairs_automatised.py
+    ldsc_genetic_correlation: /scripts/pipeline/05_LDSC_run_pairs_automatised.py
+    hdl_genetic_correlation: /scripts/pipeline/05_HDL_run_pairs_automatised.py
+    supergnova_genetic_correlation_automatised: /scripts/pipeline/05_SUPERGNOVA_run_pairs_automatised.py
+    supergnova_genetic_correlation_batches: /scripts/pipeline/05_SUPERGNOVA_run_batches.py
     ldsc_SNP: scripts/pipeline/6A_ldsc_extract_SNPs.py
     ldsc_results_to_csv: scripts/pipeline/06_LDSC_extract_SNPs.py
     hdl_results_to_csv: scripts/pipeline/06_HDL_read_results_extract_gencor.py
+  JOBS_MN:
+    jobs_mn: /scripts/JOBS_MN/
   ldsc:
     ldsc_software: scripts/ldsc/ldsc.py
     ldsc_munge: scripts/ldsc/munge_sumstats.py

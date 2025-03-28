@@ -10,6 +10,7 @@ def main():
 	parser.add_argument("--env", choices=["local", "remote"], required = True)
 	parser.add_argument("--type", choices=["MR", "supergnova"],
 					 help="This argument refers to whether I want to create the file for MR or supergnova")
+	
 	args = parser.parse_args()
 
 	if args.env == "local":
@@ -37,33 +38,40 @@ def main():
 	results_folder = config["Results"]["results_folder"]
 	ldsc_results = config["Results"]["ldsc_results_corrected_csv"]
 	
+	output_folder = ""
+	output_file = ""
+
 	if args.type == "MR":
-		output_folder = config["SumStats"]["MR_folder"]
+		# output_folder = config["SumStats"]["MR_folder"]
+		output_file = config["SumStats"]["MR_paired"]
 	elif args.type == "supergnova":
-		output_folder = config["SumStats"]["supergnova_folder"]
+		# output_folder = config["SumStats"]["supergnova_folder"]
+		output_file = config["SumStats"]["supergnova_paired"]
 	
+	output_file_path = f"{base_path}{sumstats_folder}{output_file}"
 	
 	ldsc_results_path = f"{base_path}{results_folder}{ldsc_results}"
 	final_description_path = f"{base_path}{sumstats_folder}{final_description}"
 
-	cancer_csv = config["SumStats"]["cancer_paired"]
-	psy_csv = config["SumStats"]["psychiatric_paired"]
-	neuro_csv = config["SumStats"]["neuro_paired"]
-	cancer_psy_csv = config["SumStats"]["cancer_psy_paired"]
-	psy_neuro_csv = config["SumStats"]["psychiatric_neuro_paired"]
-	cancer_neuro_csv = config["SumStats"]["cancer_neuro_paired"]
+	# # cancer_csv = config["SumStats"]["cancer_paired"]
+	# # psy_csv = config["SumStats"]["psychiatric_paired"]
+	# # neuro_csv = config["SumStats"]["neuro_paired"]
+	# # cancer_psy_csv = config["SumStats"]["cancer_psy_paired"]
+	# # psy_neuro_csv = config["SumStats"]["psychiatric_neuro_paired"]
+	# # cancer_neuro_csv = config["SumStats"]["cancer_neuro_paired"]
 
-	cancer_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_csv}"
-	psy_csv_path = f"{base_path}{sumstats_folder}{output_folder}{psy_csv}"
-	neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{neuro_csv}"
-	cancer_psy_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_psy_csv}"
-	psy_neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{psy_neuro_csv}"
-	cancer_neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_neuro_csv}"
+	# # cancer_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_csv}"
+	# # psy_csv_path = f"{base_path}{sumstats_folder}{output_folder}{psy_csv}"
+	# # neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{neuro_csv}"
+	# # cancer_psy_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_psy_csv}"
+	# # psy_neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{psy_neuro_csv}"
+	# # cancer_neuro_csv_path = f"{base_path}{sumstats_folder}{output_folder}{cancer_neuro_csv}"
 
 
 	## Extract relevant result 
 	df_results_ldsc = pd.read_csv(ldsc_results_path)
 	df_results_ldsc = df_results_ldsc[df_results_ldsc["p_FDR_rejected"]==True]
+	df_results_ldsc = df_results_ldsc[df_results_ldsc["disease_1"] != df_results_ldsc["disease_2"]]
 	df_results_ldsc = df_results_ldsc[[
 		'id_1', 
 		'label_1', 
@@ -127,21 +135,25 @@ def main():
 		df_results_ldsc["supergnova"] = "False"
 
 
-	# Same type
-	df_cancer = df_results_ldsc[(df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "CAN")]
-	df_cancer.to_csv(cancer_csv_path, index=False)
-	df_psychiatric = df_results_ldsc[(df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "PSY")]
-	df_psychiatric.to_csv(psy_csv_path, index=False)
-	df_neurobiological = df_results_ldsc[(df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "NEU")]
-	df_neurobiological.to_csv(neuro_csv_path, index=False)
+	df_results_ldsc['batch'] = (df_results_ldsc.index // 50) + 1
 
-	# Different type
-	df_can_psy = df_results_ldsc[((df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "PSY") | (df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "CAN"))]
-	df_can_psy.to_csv(cancer_psy_csv_path, index=False)
-	df_can_neu = df_results_ldsc[((df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "NEU") | (df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "CAN"))]
-	df_can_neu.to_csv(cancer_neuro_csv_path, index=False)
-	df_psy_neu = df_results_ldsc[((df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "NEU") | (df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "PSY"))]
-	df_psy_neu.to_csv(psy_neuro_csv_path, index=False)
+	df_results_ldsc.to_csv(output_file_path, index=False)
+
+	# Same type
+	# # df_cancer = df_results_ldsc[(df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "CAN")]
+	# # df_cancer.to_csv(cancer_csv_path, index=False)
+	# # df_psychiatric = df_results_ldsc[(df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "PSY")]
+	# # df_psychiatric.to_csv(psy_csv_path, index=False)
+	# # df_neurobiological = df_results_ldsc[(df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "NEU")]
+	# # df_neurobiological.to_csv(neuro_csv_path, index=False)
+
+	# # # Different type
+	# # df_can_psy = df_results_ldsc[((df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "PSY") | (df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "CAN"))]
+	# # df_can_psy.to_csv(cancer_psy_csv_path, index=False)
+	# # df_can_neu = df_results_ldsc[((df_results_ldsc["type_1"] == "CAN") & (df_results_ldsc["type_2"] == "NEU") | (df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "CAN"))]
+	# # df_can_neu.to_csv(cancer_neuro_csv_path, index=False)
+	# # df_psy_neu = df_results_ldsc[((df_results_ldsc["type_1"] == "PSY") & (df_results_ldsc["type_2"] == "NEU") | (df_results_ldsc["type_1"] == "NEU") & (df_results_ldsc["type_2"] == "PSY"))]
+	# # df_psy_neu.to_csv(psy_neuro_csv_path, index=False)
 
 
 	# # df_can_psy_1 = df_results_ldsc[(df_results_ldsc["type_1"] == "CAN" & df_results_ldsc["type_2"] == "PSY")]

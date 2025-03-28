@@ -58,13 +58,16 @@ Results/old_gnova/
 Results/old_hdl/
 Results/old_ldsc/
 Results/Supergnova/ 
+Results/hdl_ldsc_merged.csv
+Results/ldsc_genetic_correlation_pcorrected_duplicated.csv
+Results/ldsc_genetic_correlation_pcorrected.csv
 
 # Csv not ready to share
 Results/gnova_genetic_correlation.csv
 Results/HDL_genetic_correlation.csv
 Results/ldsc_genetic_correlation_corrected_old1.csv
-Results/*
-
+Results/old_csv_results/
+Results/tables/
 
 # Scripts unready or unable to share
 ## Unable to share
@@ -94,6 +97,9 @@ SumStats/PREPROCESSED/
 SumStats/data_description_matrix.csv
 SumStats/final_sumstats_description (copy).csv
 SumStats/final_sumstats_description.csv
+SumStats/Supergnova_paired/
+SumStats/supergnova_paired.csv
+SumStats/USCS_genome.csv
 
 # Images generated for presentations
 relationship_comorbidities_results.*
