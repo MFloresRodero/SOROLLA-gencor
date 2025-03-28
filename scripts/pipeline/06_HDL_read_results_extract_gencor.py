@@ -29,7 +29,8 @@ def main():
     hdl_csv_output = config["Results"]["hdl_results_csv"]
 
     folder_path = f"{base_path}{results_folder}{hdl_output}"
-    output_csv_path = f"{base_path}{results_folder}{hdl_output}{hdl_csv_output}"
+    # output_csv_path = f"{base_path}{results_folder}{hdl_output}{hdl_csv_output}"
+    output_csv_path = f"{base_path}{results_folder}{hdl_csv_output}"
 
     extract_all_HDL_genetic_correlation(folder_path, output_csv_path, args.env)
 
@@ -95,10 +96,10 @@ def extract_all_HDL_genetic_correlation(folder_path, output_csv_path, env):
         if filename.endswith(".Rout"):
             file_path = os.path.join(folder_path, filename)
             result = extract_results_HDL(file_path)
-            result['label_1'] = filename.split('_')[0]
-            result['id_1'] = filename.split('_')[1]
-            result['label_2'] = filename.split('_')[2]
-            result['id_2'] = filename.split('_')[3]
+            result['id_1'] = filename.split('_')[0]
+            result['label_1'] = filename.split('_')[1]
+            result['id_2'] = filename.split('_')[2]
+            result['label_2'] = filename.split('_')[3].replace(".Rout","")
             all_results.append(result)
     
     df = pd.DataFrame(all_results)

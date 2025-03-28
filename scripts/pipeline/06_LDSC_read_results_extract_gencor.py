@@ -25,14 +25,28 @@ def extract_genetic_correlation_results(file_path):
                     'se': summary_lines[3],
                     'z': summary_lines[4],
                     'p': summary_lines[5],
-                    'h2_obs': summary_lines[6],
-                    'h2_obs_se': summary_lines[7],
-                    'h2_int': summary_lines[8],
-                    'h2_int_se': summary_lines[9],
+                    # 'h2_1': summary_lines[6],
+                    # 'h2_1_se': summary_lines[7],
+                    # 'h2_2': summary_lines[8],
+                    # 'h2_2_se': summary_lines[9],
                     'gcov_int': summary_lines[10],
                     'gcov_int_se': summary_lines[11]
                 })
                 break
+        
+        # There was an error, the intercept is not the heritability. Fix that extraction.        
+        trait_count = 0
+        for i, line in enumerate(lines):
+            if "Total Observed scale h2:" in line:
+                trait_count += 1
+                parts = line.split()
+
+                if trait_count == 1:
+                    result["h2_1"] = parts[4]
+                    result["h2_1_se"] = parts[5].strip("()")
+                elif trait_count == 2:
+                    result["h2_2"] = parts[4]
+                    result["h2_2_se"] = parts[5].strip("()")
     
     return result
 
