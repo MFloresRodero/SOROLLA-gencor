@@ -5,7 +5,9 @@ typescript
 scripts/CONTROLS/.ipynb_checkpoints
 config/base_env.yml
 config/MR_requirements.yml
+config/r_supergnova.yml
 config/base.yml
+PAPERGENCOR.bib
 
 # Ignore files from Fabian's and test results
 ROBUSTNESS_TESTS/TEST_ZETA-BETA/ldsc-B/
@@ -38,6 +40,12 @@ ROBUSTNESS_TESTS/TEST_BULIK/test_create_pairs_diseases.py
 ROBUSTNESS_TESTS/TEST_BULIK/test_ldsc_munge_sumstats_from_csv.py
 ROBUSTNESS_TESTS/TEST_BULIK/test_ldsc_paired_datasets.csv
 
+
+# Ignore files from rerun_other_project
+JON_comorbidities/*
+REACTOME/
+CNS-cancer-comorbidities-atlas/
+
 # Ignore reference files except doc showing locations
 Ref_Genomes/1000G_Phase3_LD_scores/
 Ref_Genomes/eur_w_ld_chr/
@@ -46,28 +54,38 @@ Ref_Genomes/HapMap3/
 Ref_Genomes/plink/
 Ref_Genomes/UKB_imputed_SVD_eigen99_extraction/
 Ref_Genomes/genotype.zip
+Ref_Genomes/rGREAT_genesets/*
+00-All*
 
 # Ignore full results from softwares (only keep csv files)
 Results/CONTROLS/*.log
 Results/Gnova/
 Results/ldsc/
 Results/HDL/
-Results/plots/
+Results/OUTPUTS/
 Results/MR/
-Results/old_gnova/
-Results/old_hdl/
-Results/old_ldsc/
+Results/all_old/
 Results/Supergnova/ 
 Results/hdl_ldsc_merged.csv
 Results/ldsc_genetic_correlation_pcorrected_duplicated.csv
 Results/ldsc_genetic_correlation_pcorrected.csv
+Results/Meta/*
+Results/significant_pathways_FDR05.tsv
 
 # Csv not ready to share
-Results/gnova_genetic_correlation.csv
 Results/HDL_genetic_correlation.csv
 Results/ldsc_genetic_correlation_corrected_old1.csv
 Results/old_csv_results/
 Results/tables/
+Results/excell_shared.csv
+Results/errors_ref_df.csv
+Results/hdl_genetic_correlation_pcorrected_all_missing_too.csv
+Results/hdl_genetic_correlation_pcorrected.csv
+Results/hdl_ldsc_shared.csv
+Results/ldsc_hdl_both_joined.csv
+Results/*.png
+Results/*.pdf
+Results/*.svg
 
 # Scripts unready or unable to share
 ## Unable to share
@@ -80,6 +98,7 @@ scripts/SUPERGNOVA/
 scripts/OLD_OR_DISCARDED/
 scripts/JOBS_MN/
 scripts/pipeline/sumstats_modifications.py
+scripts/pipeline/SNPS_visualization.ipynb
 
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints
