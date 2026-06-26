@@ -103,6 +103,7 @@ scripts/OLD_OR_DISCARDED/
 scripts/JOBS_MN/
 scripts/pipeline/sumstats_modifications.py
 scripts/pipeline/SNPS_visualization.ipynb
+scripts/pipeline/04_create_pairs_from_ldsc_results.py
 
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints

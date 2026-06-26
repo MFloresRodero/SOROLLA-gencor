@@ -15,7 +15,8 @@ library(stringr)
 # Load the csv file
 Here the dataset (csv file from GWAS catalog) is loaded. Change the path accordingly.
 ```{r}
-full_catalog <- readr::read_tsv("/home/maria/git/SOROLLA/SumStats/PAST_CSV/summary_statistics_table_export.tsv", num_threads = 1)
+full_catalog <- readr::read_tsv("/home/maria/git/SOROLLA/SumStats/GWASCAT_summary_statistics_table_export_new.tsv", num_threads = 1)
+print(nrow(full_catalog))
 ```
 
 ## Clean the data and only keep the rows that are relevant
@@ -44,10 +45,12 @@ filtered_catalog <- filtered_catalog %>%
                 filter(SampleSize >= 10000)
 
 # Save filtered_catalog as a CSV file
-write.csv(filtered_catalog, "/home/maria/git/SOROLLA/SumStats/FM_filtered_catalog.csv", row.names = FALSE)
+write.csv(filtered_catalog, "/home/maria/git/SOROLLA/SumStats/latest_filtered_catalog.csv", row.names = FALSE)
 
 # Confirmation message
-cat("filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/FM_filtered_catalog.csv'")
+cat("filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/latest_filtered_catalog.csv'")
+
+print(nrow(filtered_catalog))
 
 ```
 Now create another dataframe filtering with the desired keywords.
@@ -247,19 +250,20 @@ matches <- sapply(1:nrow(filtered_catalog), function(i) {
 
 words_filtered_catalog <- filtered_catalog[matches, ]
 print(words_filtered_catalog)
-
+print(nrow(words_filtered_catalog))
 ```
 
 ```{r}
 # Save filtered_catalog as a CSV file
-write.csv(words_filtered_catalog, "/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv", row.names = FALSE)
+write.csv(words_filtered_catalog, "/home/maria/git/SOROLLA/SumStats/latest_words_filtered_catalog.csv", row.names = FALSE)
 
 # Confirmation message
-cat("words_filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv'")
+cat("words_filtered_catalog has been saved as '/home/maria/git/SOROLLA/SumStats/latest_words_filtered_catalog.csv'")
 ```
 
 ```{r}
-df <- read.csv("/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv")
+df <- read.csv("/home/maria/git/SOROLLA/SumStats/latest_words_filtered_catalog.csv")
+print(nrow(df))
 ```
 
 
@@ -279,6 +283,8 @@ extract_and_update <- function(description) {
   return(data.frame(Nca_val = Nca_val, Nco_val = Nco_val))
 }
 
+print(nrow(df))
+
 # Apply function to populate Nca_val and Nco_val columns
 df <- df %>%
   mutate(extracted_vals = extract_and_update(initialSampleDescription),
@@ -286,57 +292,60 @@ df <- df %>%
          Nco_val = extracted_vals$Nco_val) %>%
   select(-extracted_vals)
 
+
+df_filtered <- df %>% filter(Nca_val >= 4500)
+print(nrow(df_filtered))
 ```
 
 ```{r}
-write.csv(df, "/home/maria/git/SOROLLA/SumStats/FM_words_filtered_catalog.csv", row.names = FALSE)
+write.csv(df_filtered, "/home/maria/git/SOROLLA/SumStats/latest_words_filtered_catalog_cases.csv", row.names = FALSE)
 
 ```
 
 
-# Now we filter through the ones that I had already annotated somehow (because I just want to add new ones) and also through the Fabian ones.
+<!-- # Now we filter through the ones that I had already annotated somehow (because I just want to add new ones) and also through the Fabian ones. -->
 
-```{r}
-#Load annotated dataset with Yes/not enough N...
-annotated <- read.csv("/home/maria/git/SOROLLA/SumStats/PAST_CSV/annotated_past_catalog.csv")
-Fabian <- read_csv("/home/maria/git/HDL-scripting/R/Datasets-info.csv")
-```
+<!-- ```{r} -->
+<!-- #Load annotated dataset with Yes/not enough N... -->
+<!-- annotated <- read.csv("/home/maria/git/SOROLLA/SumStats/PAST_CSV/annotated_past_catalog.csv") -->
+<!-- Fabian <- read_csv("/home/maria/git/HDL-scripting/R/Datasets-info.csv") -->
+<!-- ``` -->
 
-remove_list <- annotated %>%
-  filter(SelectionFilter %in% c("N not enough", "Unsure", "not specific", "Not relevant", "Not SNP", "MICROBIOME")) %>%
-  pull(accessionId)
+<!-- remove_list <- annotated %>% -->
+<!--   filter(SelectionFilter %in% c("N not enough", "Unsure", "not specific", "Not relevant", "Not SNP", "MICROBIOME")) %>% -->
+<!--   pull(accessionId) -->
 
-words_filtered_from_annotated <- df %>%
-  # Keep rows where AccessionId is not in the list
-  filter(!(accessionId %in% remove_list))
+<!-- words_filtered_from_annotated <- df %>% -->
+<!--   # Keep rows where AccessionId is not in the list -->
+<!--   filter(!(accessionId %in% remove_list)) -->
 
-words_filtered_from_annotated <- words_filtered_from_annotated %>%
-  # Keep rows where AccessionId is not in the list
-  filter(!(efoTraits %in% complete))
+<!-- words_filtered_from_annotated <- words_filtered_from_annotated %>% -->
+<!--   # Keep rows where AccessionId is not in the list -->
+<!--   filter(!(efoTraits %in% complete)) -->
 
-```{r}
-list_ids_remove <- annotated$accessionId
-df_clean <- df %>%
-  filter(!(accessionId %in% list_ids_remove))
-```
+<!-- ```{r} -->
+<!-- list_ids_remove <- annotated$accessionId -->
+<!-- df_clean <- df %>% -->
+<!--   filter(!(accessionId %in% list_ids_remove)) -->
+<!-- ``` -->
 
 
 
-```{r}
-df_clean <- df_clean %>%
-  # Keep rows where AccessionId is not in the list
-  filter(!(efoTraits == "blood protein measurement"))
+<!-- ```{r} -->
+<!-- df_clean <- df_clean %>% -->
+<!--   # Keep rows where AccessionId is not in the list -->
+<!--   filter(!(efoTraits == "blood protein measurement")) -->
 
-df_clean <- df_clean %>%
-  # Keep rows where AccessionId is not in the list
-  filter(!(efoTraits == "intestinal infectious diseases"))
+<!-- df_clean <- df_clean %>% -->
+<!--   # Keep rows where AccessionId is not in the list -->
+<!--   filter(!(efoTraits == "intestinal infectious diseases")) -->
 
-df_clean <- df_clean[!grepl("measurement", df_clean$efoTraits), ]
+<!-- df_clean <- df_clean[!grepl("measurement", df_clean$efoTraits), ] -->
 
-```
+<!-- ``` -->
 
-```{r}
-write.csv(df_clean, "/home/maria/git/SOROLLA/SumStats/PAST_CSV/FM_words_filtered_catalog_clean.csv", row.names = FALSE)
+<!-- ```{r} -->
+<!-- write.csv(df_clean, "/home/maria/git/SOROLLA/SumStats/PAST_CSV/FM_words_filtered_catalog_clean.csv", row.names = FALSE) -->
 
-```
+<!-- ``` -->
 

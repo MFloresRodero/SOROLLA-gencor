@@ -40,3 +40,8 @@ USEFUL REFERENCE DATA BUT NOT USED AT THE MOMENT
 #### File Description:  tarball of QC+ polymorphic genotype data per population, formatted as PLINK PED and MAP files [833 MB]
 ************************************************************************************************
 ************************************************************************************************
+
+
+
+############## FOR rGREAT REACTOME
+## https://data.broadinstitute.org/gsea-msigdb/msigdb/release/7.5.1/c2.cp.reactome.v7.5.1.symbols.gmt

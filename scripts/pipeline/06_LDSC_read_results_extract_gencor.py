@@ -64,14 +64,26 @@ def extract_genetic_correlation_results_for_multiple_files(folder_path, output_c
 
 def main():
     parser = argparse.ArgumentParser(description="This script extracts genetic correlation results from log files in a folder and saves them to a CSV file")
-    parser.add_argument("--env", choices=["local", "remote"], required=True,
+    parser.add_argument("--env", choices=["local", "remote", "shared"], required=True,
                         help="Specify if you are running this file in local (local) or in the MN5 (remote)")
     args = parser.parse_args()
 
-    # Load configuration based on environment
-    folder_path = "/home/maria/git/SOROLLA/Results/ldsc" if args.env == "local" else "/gpfs/projects/bsc02/mflores/gencor/Results/ldsc"
-    output_csv_path = "/home/maria/git/SOROLLA/Results/ldsc_genetic_correlation.csv" if args.env == "local" else "/gpfs/projects/bsc02/mflores/gencor/Results/ldsc_genetic_correlation.csv"
+    if args.env == "local":
+        config_file = "/home/maria/git/SOROLLA/config/config.yaml"
+        folder_path = "/home/maria/git/SOROLLA/Results/ldsc"
+        output_csv_path = "/home/maria/git/SOROLLA/Results/ldsc_genetic_correlation.csv"
 
+    elif args.env == "remote":
+        config_file = "/gpfs/projects/bsc02/mflores/gencor/config/config.yaml"
+        folder_path = "/gpfs/projects/bsc02/mflores/gencor/Results/ldsc"
+        output_csv_path = "/gpfs/projects/bsc02/mflores/gencor/Results/ldsc_genetic_correlation.csv"
+    elif args.env == "shared":
+        config_file = "/gpfs/projects/bsc02/mflores/gencor/JON/config.yaml"
+        folder_path = "/gpfs/projects/bsc02/mflores/gencor/JON/results/ldsc"
+        output_csv_path = "/gpfs/projects/bsc02/mflores/gencor/JON/results/ldsc_genetic_correlation.csv"
+    else:
+        raise ValueError("Environment not found, check if you specified the environment with --env or if the path is wrong")
+    
     extract_genetic_correlation_results_for_multiple_files(folder_path, output_csv_path, args.env)
 
 if __name__ == "__main__":

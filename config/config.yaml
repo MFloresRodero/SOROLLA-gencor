@@ -6,18 +6,22 @@ SumStats:
   raw_folder: SumStats/RAW/
   preprocessed_folder: SumStats/PREPROCESSED/
   preprocessed_saving_process: 0_checkpoints/
+  relevant_SNPS_folder: SumStats/RELEVANT_SNPS/
   munged_folder: SumStats/Munged/
   wrangled_folder: SumStats/Wrangled/
   wrangle_commands: SumStats/Wrangled/commands/
   raw_catalog: excell_sumstats_description.csv
   description_csv: final_sumstats_description.csv
   matrix_description: data_description_matrix.csv
+  ldsc_heritability_checkpoint: ldsc_heritability_checkpoint.csv
   paired_data: paired_datasets.csv
   paired_data_copy: paired_datasets_copy_merge.csv
+  paired_data_selected: paired_datasets_selected_RGreat.csv
   supergnova_folder: Supergnova_paired/
   MR_folder: MR_paired/
   supergnova_paired: supergnova_paired.csv
   MR_paired: MR_paired.csv
+  biomart_control: biomart_control.csv
   # cancer_paired: cancer_paired.csv
   # psychiatric_paired: psychiatric_paired.csv
   # neuro_paired: neuro_paired.csv
@@ -33,7 +37,7 @@ Scripts:
     automatised_munge_script: sscripts/pipeline/03_MUNGE_sumstats_from_csv.py
     automatised_wrangle_script: scripts/pipeline/03_WRANGLE_create_individual_commands.py
     run_individual_wrangle_commands: scripts/pipeline/03_WRANGLE_run_wrangle_commands.sh
-    create_pairs: scripts/pipeline/04_LDSC_create_pairs_diseases.py
+    create_pairs: scripts/pipeline/04_create_pairs_diseases_csv.py
     ldsc_genetic_correlation: /scripts/pipeline/05_LDSC_run_pairs_automatised.py
     hdl_genetic_correlation: /scripts/pipeline/05_HDL_run_pairs_automatised.py
     supergnova_genetic_correlation_automatised: /scripts/pipeline/05_SUPERGNOVA_run_pairs_automatised.py
@@ -41,8 +45,13 @@ Scripts:
     ldsc_SNP: scripts/pipeline/6A_ldsc_extract_SNPs.py
     ldsc_results_to_csv: scripts/pipeline/06_LDSC_extract_SNPs.py
     hdl_results_to_csv: scripts/pipeline/06_HDL_read_results_extract_gencor.py
+    supergnova_enrichment: scripts/pipeline/08_Supergnova_enrichment.R
+    supergnova_biomart: scripts/pipeline/08_Supergnova_biomaRt.R
+    RGreat: scripts/pipeline/12_rGREAT.R
   JOBS_MN:
     jobs_mn: /scripts/JOBS_MN/
+    run_biomart_supergnova: supergnova_biomart_my_run.txt
+    run_enrichment_supergnova: supergnova_enrichment_my_run.txt
   ldsc:
     ldsc_software: scripts/ldsc/ldsc.py
     ldsc_munge: scripts/ldsc/munge_sumstats.py
@@ -60,11 +69,18 @@ Results:
   ldsc_results_csv: ldsc_genetic_correlation.csv
   ldsc_results_corrected_csv: ldsc_genetic_correlation_pcorrected.csv
   folder_ldsc: ldsc/
+  folder_ldsc_heritability: ldsc_heritability/
+  ldsc_heritability_results_csv: ldsc_heritability.csv
   gnova_results_csv: gnova_genetic_correlation.csv
   folder_supergnova: Supergnova/
+  folder_supergnova_processed: Processed/
+  folder_supergnova_tables: tables_supergnova
+  folders_supergnova_plots: plots_supergnova
   folder_hdl: HDL/
   hdl_results_csv: hdl_genetic_correlation.csv
+  hdl_results_corrected_csv: hdl_genetic_correlation_pcorrected.csv
   MR_folder: MR/
+  RGreat: RGreat/
 
 reference_genomes:
   reference_genomes_folder: /Ref_Genomes/
@@ -75,6 +91,7 @@ reference_genomes:
   plink_gnova: 1000G_EUR_Phase3_plink/1000G.EUR.QC.@
   supergnova_bfile: 1000G_EUR_Phase3_plink/1000G.EUR.QC.@
   supergnova_partition: 1000G_EUR_Phase3_plink/data/partition/eur_chr@.bed
+  reactome_rGREAT: rGREAT_genesets/c2.cp.reactome.v7.5.1.entrez.gmt.rds
 
 # Local configuration
 local: 
@@ -91,6 +108,6 @@ remote:
   HDL_environment: HDL_with_R.sif
 
 shared:
-  base_path: /gpfs/projects/hpcsharing/364592
-  environments_folder: /gpfs/projects/hpcsharing/364592/singularity
+  base_path: /gpfs/projects/bsc02/mflores/gencor
+  environments_folder: /gpfs/projects/bsc02/mflores/singularity
   singularity_ldsc: ldsc.sif

@@ -18,7 +18,7 @@ def main():
     elif args.env == "remote":
         config_file = "/gpfs/projects/bsc02/mflores/gencor/config/config.yaml"
     elif args.env == "shared":
-        config_file = "/gpfs/projects/hpcsharing/364592/config/config.yaml"
+        config_file = "/gpfs/projects/bsc02/mflores/gencor/JON/config.yaml"
     else:
         raise ValueError("Environment not found, check if you specified the environment with --env or if the path is wrong")
 

@@ -16,7 +16,7 @@ def main():
     elif args.env == "remote":
         config_file = "/gpfs/projects/bsc02/mflores/gencor/config/config.yaml"
     elif args.env == "shared":
-        config_file = "/gpfs/projects/hpcsharing/364592/config/config.yaml"
+        config_file = "/gpfs/projects/bsc02/mflores/gencor/JON/config.yaml"
     else:
         raise ValueError("Environment not found, check if you specified the environment with --env or if the path is wrong")
 
@@ -55,6 +55,10 @@ def main():
     merge_alleles_path = f"{base_path}{merge_alleles}{merge_alleles_map}"
     matrix_csv_path = os.path.join(base_path, sumstats_folder, matrix_description)
 
+    # Create folders if they do not exist
+    os.makedirs(output_folder, exist_ok=True)
+
+
     # Call function to run munge_sumstats
     run_munge_sumstats(description_csv_path, matrix_csv_path, args.env, singularity_env_path, munge_script_path, merge_alleles_path, output_folder)
 
@@ -68,8 +72,8 @@ def generate_munge_command(csv_row, matrix_row, env, singularity_env_path, munge
     command.extend(["--a2", "A2"])
     command.extend(["--N", str(csv_row["N_num"])])
 
-    if matrix_row["A1_frequency"]:
-        command.extend(["--frq", "A1_frequency"])
+    if matrix_row["A1_frequency"] in [1]:
+        command.extend(["--frq", "frq"])
 
     if matrix_row["beta"] in [1, 2]:
         command.extend(["--signed-sumstats", f"beta,0"])
