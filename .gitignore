@@ -110,6 +110,8 @@ scripts/JOBS_MN/
 scripts/pipeline/sumstats_modifications.py
 scripts/pipeline/SNPS_visualization.ipynb
 scripts/pipeline/04_create_pairs_from_ldsc_results.py
+scripts/pipeline/12_myrun_rGreat.py
+scripts/pipeline/13_merge_rGREAT.py
 
 ## Not ready
 scripts/pipeline/.ipynb_checkpoints
