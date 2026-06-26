@@ -8,6 +8,10 @@ config/MR_requirements.yml
 config/r_supergnova.yml
 config/base.yml
 PAPERGENCOR.bib
+*drawio*
+config/ATLAS.yml
+config/atlas_sessionInfo.txt
+config/atlas_r_packages.txt
 
 # Ignore files from Fabian's and test results
 ROBUSTNESS_TESTS/TEST_ZETA-BETA/ldsc-B/
@@ -46,6 +50,8 @@ JON_comorbidities/*
 REACTOME/
 CNS-cancer-comorbidities-atlas/
 shiny_comorbidity_dashboard/
+CNS-cancer-comorbidities-atlas_zip.zip
+CNS-cancer-comorbidities-atlas_zip
 
 # Ignore reference files except doc showing locations
 Ref_Genomes/1000G_Phase3_LD_scores/
@@ -128,6 +134,7 @@ SumStats/SNPs_diseases/
 SumStats/SNPs_combined_all.csv
 SumStats/supergnova_paired_test.csv
 SumStats/paired_datasets_selected_RGreat.csv
+SumStats/GWASCAT_summary_statistics_table_export.tsv
 
 # Images generated for presentations
 relationship_comorbidities_results.*
